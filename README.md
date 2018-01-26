@@ -16,37 +16,43 @@ This bundle provides some basic features to reduce spam in forms.
 
 ### Installation
 
+Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
+
 ```
 composer require core23/antispam-bundle
 ```
 
-### Enabling the bundle
+### Enable the Bundle
+
+Then, enable the bundle by adding it to the list of registered bundles in `bundles.php` file of your project:
 
 ```php
-    // config/bundles.php
+// config/bundles.php
 
-    return [
-        // ...
-        Core23\AntiSpamBundle\Core23AntiSpamBundle::class => ['all' => true],
-    ];
+return [
+    // ...
+    Core23\AntiSpamBundle\Core23AntiSpamBundle::class => ['all' => true],
+];
 ```
 
-Define the API credentials in your configuration.
+### Configure the Bundle
+
+Create a configuration file called `core23_antispam.yaml`:
 
 ```yml
-    # config.yml
+# config/packages/core23_antispam.yaml
 
-    core23_antispam:
-        # Timed protection
-        time:
-            min: 5
-            max: 3600
-            global: false
-            
-        # Honeypot protection
-        honeypot:
-            field: 'email_address'
-            class: 'hidden'
-            global: false
-            provider: 'core23_antispam.provider.session'
+core23_antispam:
+    # Timed protection
+    time:
+        min: 5
+        max: 3600
+        global: false
+        
+    # Honeypot protection
+    honeypot:
+        field: 'email_address'
+        class: 'hidden'
+        global: false
+        provider: 'core23_antispam.provider.session'
 ```
