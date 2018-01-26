@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * (c) Christian Gripp <mail@core23.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Core23\AntiSpamBundle\DependencyInjection;
+
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+
+final class Core23AntiSpamExtension extends Extension
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function getAlias()
+    {
+        return 'core23_antispam';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function load(array $configs, ContainerBuilder $container): void
+    {
+        $configuration = new Configuration();
+        $config        = $this->processConfiguration($configuration, $configs);
+
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
+
+        $this->configureTime($container, $config);
+        $this->configureHoneypot($container, $config);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     */
+    private function configureTime(ContainerBuilder $container, array $config): void
+    {
+        $container
+            ->getDefinition('core23_antispam.form.extension.type.time')
+            ->replaceArgument(2, $config['time']);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     */
+    private function configureHoneypot(ContainerBuilder $container, array $config): void
+    {
+        $container
+            ->getDefinition('core23_antispam.form.extension.type.honeypot')
+            ->replaceArgument(1, $config['honeypot']);
+
+        $container->setAlias('core23_antispam.provider', $config['honeypot']['provider']);
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="time_error">
+        <source>time_error</source>
+        <target>Das Formular wurde zu schnell versendet.</target>
+      </trans-unit>
+      <trans-unit id="honeypot_error">
+        <source>honeypot_error</source>
+        <target>Es wurde ein ungültiges Felder ausgefüllt.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

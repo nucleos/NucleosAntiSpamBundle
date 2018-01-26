@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="core23_antispam.form.extension.type.honeypot" class="Core23\AntiSpamBundle\Form\Extension\HoneypotFormExtension">
+      <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+      <argument type="service" id="translator"/>
+      <argument/>
+    </service>
+    <service id="core23_antispam.provider.session" class="Core23\AntiSpamBundle\Provider\SessionTimeProvider">
+      <argument type="service" id="session"/>
+    </service>
+    <service id="core23_antispam.form.extension.type.time" class="Core23\AntiSpamBundle\Form\Extension\TimeFormExtension">
+      <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+      <argument type="service" id="core23_antispam.provider"/>
+      <argument type="service" id="translator"/>
+      <argument/>
+    </service>
+  </services>
+</container>
