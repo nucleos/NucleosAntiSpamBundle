@@ -7,7 +7,7 @@ What is AntiSpamBundle?
 [![Build Status](https://travis-ci.org/core23/AntiSpamBundle.svg)](https://travis-ci.org/core23/AntiSpamBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/AntiSpamBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/core23/AntiSpamBundle)
 [![Coverage Status](https://coveralls.io/repos/core23/AntiSpamBundle/badge.svg)](https://coveralls.io/r/core23/AntiSpamBundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/XXX/mini.png)](https://insight.sensiolabs.com/projects/XXX)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/cf5f2ca9-1126-4086-8443-a0351c307d6d/mini.png)](https://insight.sensiolabs.com/projects/cf5f2ca9-1126-4086-8443-a0351c307d6d)
 
 [![Donate to this project using Flattr](https://img.shields.io/badge/flattr-donate-yellow.svg)](https://flattr.com/profile/core23)
 [![Donate to this project using PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/gripp)
