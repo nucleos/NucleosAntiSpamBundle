@@ -25,6 +25,13 @@ final class ConfigurationTest extends TestCase
         ]]);
 
         $expected = [
+            'twig' => [
+                'mail' => [
+                    'css_class' => 'spamme',
+                    'dot_text'  => ['[DOT]', '(DOT)', '[.]'],
+                    'at_text'   => ['[AT]', '(AT)', '[ÄT]'],
+                    ],
+            ],
             'time' => [
                 'min'        => 5,
                 'max'        => 3600,
@@ -46,6 +53,13 @@ final class ConfigurationTest extends TestCase
         $processor = new Processor();
 
         $config = $processor->processConfiguration(new Configuration(), [[
+            'twig' => [
+                'mail' => [
+                    'css_class' => 'spamme',
+                    'dot_text'  => ['[DOT]'],
+                    'at_text'   => ['[AT'],
+                ],
+            ],
             'time' => [
                 'min'        => 0,
                 'max'        => 600,
@@ -60,6 +74,13 @@ final class ConfigurationTest extends TestCase
         ]]);
 
         $expected = [
+            'twig' => [
+                'mail' => [
+                    'css_class' => 'spamme',
+                    'dot_text'  => ['[DOT]'],
+                    'at_text'   => ['[AT'],
+                ],
+            ],
             'time' => [
                 'min'        => 0,
                 'max'        => 600,

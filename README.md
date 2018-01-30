@@ -85,6 +85,13 @@ Create a configuration file called `core23_antispam.yaml`:
 
 core23_antispam:
     # Time protection
+    twig:
+        mail:
+            css_class: 'spamme'
+            at_text:   [ '[DOT]', '(DOT)', '[.]' ]
+            dot_text:  [ '[AT]', '(AT)', '[ÄT]' ]
+        
+    # Time protection
     time:
         min: 5
         max: 3600

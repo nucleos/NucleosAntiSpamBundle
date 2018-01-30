@@ -27,10 +27,44 @@ final class Configuration implements ConfigurationInterface
         /** @var ArrayNodeDefinition $node */
         $node = $treeBuilder->root('core23_antispam');
 
+        $this->addTwigSection($node);
         $this->addTimeSection($node);
         $this->addHoneypotSection($node);
 
         return $treeBuilder;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    private function addTwigSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('twig')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('mail')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('css_class')->defaultValue('spamme')->end()
+                                ->arrayNode('dot_text')
+                                     ->useAttributeAsKey('id')
+                                     ->requiresAtLeastOneElement()
+                                     ->defaultValue(['[DOT]', '(DOT)', '[.]'])
+                                     ->prototype('scalar')->end()
+                                ->end()
+                                ->arrayNode('at_text')
+                                     ->useAttributeAsKey('id')
+                                     ->requiresAtLeastOneElement()
+                                     ->defaultValue(['[AT]', '(AT)', '[ÄT]'])
+                                     ->prototype('scalar')->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
     }
 
     /**

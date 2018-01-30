@@ -37,8 +37,20 @@ final class Core23AntiSpamExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
+        $this->configureTwig($config, $container);
         $this->configureTime($container, $config);
         $this->configureHoneypot($container, $config);
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     */
+    private function configureTwig($config, ContainerBuilder $container): void
+    {
+        $container->setParameter('core23_antispam.twig.mail_css_class', $config['twig']['mail']['css_class']);
+        $container->setParameter('core23_antispam.twig.mail_at_text', $config['twig']['mail']['at_text']);
+        $container->setParameter('core23_antispam.twig.mail_dot_text', $config['twig']['mail']['dot_text']);
     }
 
     /**

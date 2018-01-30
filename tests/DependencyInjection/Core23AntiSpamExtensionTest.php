@@ -33,9 +33,16 @@ final class Core23AntiSpamExtensionTest extends AbstractExtensionTestCase
         ]);
     }
 
-    public function testLoadFacebook(): void
+    public function testLoadCustom(): void
     {
         $this->load([
+            'twig' => [
+                'mail' => [
+                    'css_class' => 'spamme',
+                    'dot_text'  => ['[DOT]'],
+                    'at_text'   => ['[AT'],
+                ],
+            ],
             'time' => [
                 'min'        => 0,
                 'max'        => 600,

@@ -15,5 +15,11 @@
       <argument type="service" id="translator"/>
       <argument/>
     </service>
+    <service id="core23_antispam.twig.string_extension" class="Core23\AntiSpamBundle\Twig\Extension\StringTwigExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument>%core23_antispam.twig.mail_css_class%</argument>
+      <argument>%core23_antispam.twig.mail_at_text%</argument>
+      <argument>%core23_antispam.twig.mail_dot_text%</argument>
+    </service>
   </services>
 </container>
