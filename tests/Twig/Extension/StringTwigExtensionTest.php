@@ -45,7 +45,7 @@ final class StringTwigExtensionTest extends TestCase
     /**
      * @return array
      */
-    public function getMailHtml()
+    public function getMailHtml(): array
     {
         return [
             [
@@ -75,7 +75,7 @@ final class StringTwigExtensionTest extends TestCase
     /**
      * @return array
      */
-    public function getMailText()
+    public function getMailText(): array
     {
         return [
             [
