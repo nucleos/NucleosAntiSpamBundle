@@ -1,1 +1,7 @@
+03/02/2018 18:29  0.2.0  Added twig extensions
+9708207 Added example for twig filter
+748c0a5 Added javascript to replace obfuscated mails
+75a903f Don't use PHPUnit 7 yet
+903b81c PHPStan fix
+e703d44 Added twig filter to escape mails
 27/01/2018 09:43  0.1.0  Initial release
