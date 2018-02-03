@@ -16,7 +16,7 @@ AntiSpamBundle
 [![Donate to this project using Flattr](https://img.shields.io/badge/flattr-donate-yellow.svg)](https://flattr.com/profile/core23)
 [![Donate to this project using PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/gripp)
 
-This bundle provides some basic features to reduce spam in symfony forms.
+This bundle provides some basic features to reduce spam in symfony.
 
 ## Installation
 
@@ -59,6 +59,18 @@ $this->createForm(CustomFormType:class, null, array(
 ));
 ```
 
+### Twig text protection
+
+```twig
+{# Replace plain text #}
+{{ text|antispam }}
+
+{# Replace rich text mails #}
+{{ htmlText|antispam(true) }}
+
+```
+
+
 ### Global protection
 
 Add protection to all forms using the configuration:
@@ -84,7 +96,7 @@ Create a configuration file called `core23_antispam.yaml`:
 # config/packages/core23_antispam.yaml
 
 core23_antispam:
-    # Time protection
+    # Twig mail filter
     twig:
         mail:
             css_class: 'spamme'
