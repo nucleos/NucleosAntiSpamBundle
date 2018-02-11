@@ -47,7 +47,7 @@ final class Configuration implements ConfigurationInterface
                         ->arrayNode('mail')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('css_class')->defaultValue('spamme')->end()
+                                ->scalarNode('css_class')->defaultNull()->end()
                                 ->arrayNode('dot_text')
                                      ->useAttributeAsKey('id')
                                      ->requiresAtLeastOneElement()

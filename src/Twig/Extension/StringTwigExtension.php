@@ -20,7 +20,7 @@ final class StringTwigExtension extends AbstractExtension
     private const MAIL_TEXT_PATTERN = '/(([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\.([A-Z]{2,4})(\((.+?)\))?)/i';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $mailCssClass;
 
@@ -37,11 +37,11 @@ final class StringTwigExtension extends AbstractExtension
     /**
      * StringTwigExtension constructor.
      *
-     * @param string   $mailCssClass
-     * @param string[] $mailAtText
-     * @param string[] $mailDotText
+     * @param string|null $mailCssClass
+     * @param string[]    $mailAtText
+     * @param string[]    $mailDotText
      */
-    public function __construct(string $mailCssClass, array $mailAtText, array $mailDotText)
+    public function __construct(?string $mailCssClass, array $mailAtText, array $mailDotText)
     {
         $this->mailCssClass = $mailCssClass;
         $this->mailAtText   = $mailAtText;
@@ -105,7 +105,7 @@ final class StringTwigExtension extends AbstractExtension
         }
 
         return
-            '<span class="'.$this->mailCssClass.'">'.
+            '<span'.(!empty($this->mailCssClass) ? ' class="'.$this->mailCssClass.'"' : '').'>'.
             '<span>'.$this->getSecuredName($email).'</span>'.
                 $this->mailAtText[array_rand($this->mailAtText)].
             '<span>'.$this->getSecuredName($email, true).'</span>'.
