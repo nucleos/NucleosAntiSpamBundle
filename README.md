@@ -70,6 +70,14 @@ $this->createForm(CustomFormType:class, null, array(
 
 ```
 
+If you want a JavaScript decoding for the encoded mails, you should use the `jquery.antispam.js` library:
+
+```javascript
+$(document).ready(function () {
+  $('.custom_class').antiSpam();
+});
+
+```
 
 ### Global protection
 
@@ -99,7 +107,7 @@ core23_antispam:
     # Twig mail filter
     twig:
         mail:
-            css_class: 'spamme'
+            css_class: 'custom_class'
             at_text:   [ '[DOT]', '(DOT)', '[.]' ]
             dot_text:  [ '[AT]', '(AT)', '[ÄT]' ]
         
