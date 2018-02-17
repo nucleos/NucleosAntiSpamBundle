@@ -27,10 +27,10 @@ final class ConfigurationTest extends TestCase
         $expected = [
             'twig' => [
                 'mail' => [
-                    'css_class' => 'spamme',
+                    'css_class' => null,
                     'dot_text'  => ['[DOT]', '(DOT)', '[.]'],
                     'at_text'   => ['[AT]', '(AT)', '[ÄT]'],
-                    ],
+                ],
             ],
             'time' => [
                 'min'        => 5,
