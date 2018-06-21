@@ -123,7 +123,7 @@ final class StringTwigExtension extends AbstractExtension
     {
         $index = strpos($name, '@');
 
-        if ($index === -1) {
+        if (-1 === $index) {
             return '';
         }
 
