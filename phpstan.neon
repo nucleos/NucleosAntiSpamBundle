@@ -1,9 +1,6 @@
 parameters:
     ignoreErrors:
         # Symfony DI
-        - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface::arrayNode\(\).#'
-        - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface::integerNode\(\).#'
-        - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface::scalarNode\(\).#'
-        - '#Calling method arrayNode\(\) on possibly null value of type Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - '#Calling method integerNode\(\) on possibly null value of type Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - '#Calling method scalarNode\(\) on possibly null value of type Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+        - '#Cannot call method arrayNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+        - '#Cannot call method integerNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+        - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'

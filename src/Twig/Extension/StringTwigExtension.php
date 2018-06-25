@@ -71,10 +71,10 @@ final class StringTwigExtension extends AbstractExtension
     public function antispam(string $string, bool $html = true): string
     {
         if ($html) {
-            return (string) preg_replace_callback(self::MAIL_HTML_PATTERN, [$this, 'encryptMail'], $string);
+            return preg_replace_callback(self::MAIL_HTML_PATTERN, [$this, 'encryptMail'], $string) ?: '';
         }
 
-        return (string) preg_replace_callback(self::MAIL_TEXT_PATTERN, [$this, 'encryptMailText'], $string);
+        return preg_replace_callback(self::MAIL_TEXT_PATTERN, [$this, 'encryptMailText'], $string) ?: '';
     }
 
     /**
@@ -123,16 +123,16 @@ final class StringTwigExtension extends AbstractExtension
     {
         $index = strpos($name, '@');
 
-        if (-1 === $index) {
+        if (-1 === $index || false === $index) {
             return '';
         }
 
         if ($isDomain) {
-            $name = (string) substr($name, $index + 1);
+            $name = substr($name, $index + 1);
         } else {
-            $name = (string) substr($name, 0, $index);
+            $name = substr($name, 0, $index);
         }
 
-        return str_replace('.', $this->mailDotText[array_rand($this->mailDotText)], $name);
+        return str_replace('.', $this->mailDotText[array_rand($this->mailDotText)], $name ?: '');
     }
 }
