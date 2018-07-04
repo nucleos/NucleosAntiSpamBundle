@@ -30,7 +30,7 @@ final class HoneypotFormExtension extends AbstractTypeExtension
     private $translator;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     private $defaults;
 

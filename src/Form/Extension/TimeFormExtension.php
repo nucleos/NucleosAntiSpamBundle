@@ -34,7 +34,7 @@ final class TimeFormExtension extends AbstractTypeExtension
     private $translator;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     private $defaults;
 
