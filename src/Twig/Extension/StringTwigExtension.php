@@ -35,8 +35,6 @@ final class StringTwigExtension extends AbstractExtension
     private $mailDotText;
 
     /**
-     * StringTwigExtension constructor.
-     *
      * @param string|null $mailCssClass
      * @param string[]    $mailAtText
      * @param string[]    $mailDotText

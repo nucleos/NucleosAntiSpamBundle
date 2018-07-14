@@ -40,8 +40,6 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
     private $fieldName;
 
     /**
-     * AntiSpamHoneypotListener constructor.
-     *
      * @param TranslatorInterface $translator
      * @param string              $fieldName
      */

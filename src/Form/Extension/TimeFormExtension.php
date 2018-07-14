@@ -39,8 +39,6 @@ final class TimeFormExtension extends AbstractTypeExtension
     private $defaults;
 
     /**
-     * TimeFormExtension constructor.
-     *
      * @param TimeProviderInterface $timeProvider
      * @param TranslatorInterface   $translator
      * @param array                 $defaults

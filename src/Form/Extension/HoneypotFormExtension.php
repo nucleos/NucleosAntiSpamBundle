@@ -35,8 +35,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
     private $defaults;
 
     /**
-     * HoneypotFormExtension constructor.
-     *
      * @param TranslatorInterface $translator
      * @param array               $defaults
      */

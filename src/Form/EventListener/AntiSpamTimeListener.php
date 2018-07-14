@@ -46,8 +46,6 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
     private $options;
 
     /**
-     * AntiSpamTimeListener constructor.
-     *
      * @param TimeProviderInterface $timeProvider
      * @param TranslatorInterface   $translator
      * @param array                 $options

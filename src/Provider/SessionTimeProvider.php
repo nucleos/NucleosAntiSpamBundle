@@ -21,8 +21,6 @@ final class SessionTimeProvider implements TimeProviderInterface
     private $session;
 
     /**
-     * SessionTimeProvider constructor.
-     *
      * @param Session $session
      */
     public function __construct(Session $session)
