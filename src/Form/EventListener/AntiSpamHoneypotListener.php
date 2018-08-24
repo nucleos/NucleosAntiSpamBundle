@@ -77,7 +77,7 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
         }
 
         // Remove honeypot
-        if (is_array($data)) {
+        if (\is_array($data)) {
             unset($data[$this->fieldName]);
         }
 
