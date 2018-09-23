@@ -1,3 +1,23 @@
+23/09/2018 12:39  0.3.0  Minor improvements
+827c7a7 Updated .editorconfig
+f8512c8 Fixed CS
+0fd395e TRAVIS: Moved dependencies check to allow failures
+4e93e72 Added missing dependencies
+f459d06 Removed useless PHPDoc
+c2d5b16 Sync config
+3b7b199 Added composer-require-checker to build
+d4501d3 Added mising extensions to composer.json
+0b3883c phpstan findings
+5f52c83 Sync phpstan config
+a4774e2 phpstan findings
+083b389 Require latest phpstan version
+61581e2 Fixed CS
+5bb3732 Created issue templates
+84a1a7d Fixed tests
+38bc2b5 Explain email de/encoding
+65e6bd1 Allow empty classes for antispam
+9c0812a Make JavaScript filter ungreedy
+459117a Added missing return type
 03/02/2018 18:29  0.2.0  Added twig extensions
 9708207 Added example for twig filter
 748c0a5 Added javascript to replace obfuscated mails
