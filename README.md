@@ -13,9 +13,6 @@ AntiSpamBundle
 [![Code Climate](https://codeclimate.com/github/core23/AntiSpamBundle/badges/gpa.svg)](https://codeclimate.com/github/core23/AntiSpamBundle)
 [![Coverage Status](https://coveralls.io/repos/core23/AntiSpamBundle/badge.svg)](https://coveralls.io/r/core23/AntiSpamBundle)
 
-[![Donate to this project using Flattr](https://img.shields.io/badge/flattr-donate-yellow.svg)](https://flattr.com/profile/core23)
-[![Donate to this project using PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/gripp)
-
 This bundle provides some basic features to reduce spam in symfony.
 
 ## Installation
