@@ -67,7 +67,7 @@ $this->createForm(CustomFormType:class, null, array(
 
 ```
 
-If you want a JavaScript decoding for the encoded mails, you should use the `jquery.antispam.js` library:
+If you want a JavaScript decoding for the encoded mails, you should use the `AntiSpam.js` library:
 
 ```javascript
 $(document).ready(function () {
@@ -75,6 +75,9 @@ $(document).ready(function () {
 });
 
 ```
+
+It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore) 
+to include the JavaScript library in your page. These file is located in the `assets` folder.
 
 ### Global protection
 
@@ -121,6 +124,11 @@ core23_antispam:
         global: false
         provider: 'core23_antispam.provider.session'
 ```
+
+### Assets
+
+It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore) 
+to include the `AntiSpam.js` file in your page. These file is located in the `assets` folder.
 
 ## License
 
