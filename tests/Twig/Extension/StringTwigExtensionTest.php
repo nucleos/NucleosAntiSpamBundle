@@ -47,10 +47,11 @@ final class StringTwigExtensionTest extends TestCase
      */
     public function getMailHtml(): array
     {
+        /* @noinspection JSUnusedLocalSymbols */
         return [
             [
-                'Lorem Ipsum <script>var link = "foo@bar.baz"; </script> Sit Amet',
-                'Lorem Ipsum <script>var link = "foo@bar.baz"; </script> Sit Amet',
+                'Lorem Ipsum <script>const link = "foo@bar.baz"; </script> Sit Amet',
+                'Lorem Ipsum <script>const link = "foo@bar.baz"; </script> Sit Amet',
             ],
             // TODO: Replace plain mails text in html
 //            [
