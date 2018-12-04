@@ -1,32 +1,47 @@
-import jQuery from 'jquery';
+/**
+ * @param {string} selector
+ *
+ * @constructor
+ */
+export default class AntiSpam {
+  constructor(selector) {
+    document.querySelectorAll(selector).forEach((element) => {
+      AntiSpam.replaceText(element);
+    });
+  }
 
-(function (jQuery) {
-  "use strict";
+  /**
+   * @param {string }string
+   * @returns {string}
+   */
+  static clean(string) {
+    return string.replace(/[\[({][\w.]+[})\]]/g, '.').replace(/\s+/g, '');
+  }
 
-  jQuery.antiSpam = {version: '1.00'};
+  /**
+   * @param {Element} element
+   */
+  static replaceText(element) {
+    const spans = element.querySelectorAll('span');
 
-  jQuery.fn.antiSpam = function () {
-    function clean(string) {
-      return string.replace(/[\[\(\{][\w\.]+[\}\)\]]/g, '.').replace(/\s+/g, '');
+    if (spans.length < 2 || spans.length > 3) {
+      return;
     }
 
-    return jQuery(this).each(function () {
-      const itm = jQuery(this);
-      const spans = itm.children('span');
+    const local = spans[0].textContent;
+    const domain = spans[1].textContent;
+    const text = spans.length === 3 ? spans[2].textContent : null;
 
-      if (spans.length < 2 || spans.length > 3) {
-        return;
-      }
+    const ats = String.fromCharCode(32 * 2);
+    const cleanText = this.clean(local) + ats + this.clean(domain);
+    const mailto = String.fromCharCode(109, 97, 105, 108, 116, 111, 58);
+    const href = mailto + cleanText;
 
-      const usr = spans.filter(':eq(0)').text();
-      const dmn = spans.filter(':eq(1)').text();
-      const txt = spans.filter(':eq(2)').text();
-      const ats = String.fromCharCode(32 * 2);
-      const cpl = clean(usr) + ats + clean(dmn);
-      const mto = String.fromCharCode(109, 97, 105, 108, 116, 111, 58);
-      const hrf = mto + cpl;
-      const atx = jQuery('<a>').attr('href', hrf).attr('target', '_blank').text(txt ? txt : cpl);
-      itm.html(atx);
-    });
-  };
-})(jQuery);
+    const link = document.createElement('a');
+    link.setAttribute('href', href);
+    link.setAttribute('target', '_blank');
+    link.innerText = text ? text : cleanText;
+
+    element.replaceWith(link);
+  }
+}

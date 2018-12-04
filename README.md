@@ -71,7 +71,7 @@ If you want a JavaScript decoding for the encoded mails, you should use the `Ant
 
 ```javascript
 $(document).ready(function () {
-  $('.custom_class').antiSpam();
+  new AntiSpam('.custom_class');
 });
 
 ```
