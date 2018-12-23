@@ -1,9 +1,9 @@
-/**
- * @param {string} selector
- *
- * @constructor
- */
 export default class AntiSpam {
+  /**
+   * @param {string} selector
+   *
+   * @constructor
+   */
   constructor(selector) {
     document.querySelectorAll(selector).forEach((element) => {
       AntiSpam.replaceText(element);
