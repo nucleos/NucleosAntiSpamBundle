@@ -22,14 +22,18 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('core23_antispam');
 
-        /** @var ArrayNodeDefinition $node */
-        $node = $treeBuilder->root('core23_antispam');
+        // Keep compatibility with symfony/config < 4.2
+        if (!\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->root('core23_antispam');
+        } else {
+            $rootNode = $treeBuilder->getRootNode();
+        }
 
-        $this->addTwigSection($node);
-        $this->addTimeSection($node);
-        $this->addHoneypotSection($node);
+        $this->addTwigSection($rootNode);
+        $this->addTimeSection($rootNode);
+        $this->addHoneypotSection($rootNode);
 
         return $treeBuilder;
     }
