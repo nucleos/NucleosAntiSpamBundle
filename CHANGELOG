@@ -1,3 +1,23 @@
+30/12/2018 22:47  0.4.0  Moved bundle assets to "assets" folder
+865d2dd Fixed phpunit config for release command
+51d43c2 Use asserts for type safe root config nodes
+34eae3b Removed deprecation warnings
+809fb08 Removed deprecation warnings
+5cacbf2 Moved Jsdoc to correct method
+4fcfec2 Added platform workaround for php-cs-fixer tool
+844ca73 Require latest phpunit bridge
+8e27194 Require latest phpunit bridge
+2ca7e78 Removed deprecation warnings
+46f5a71 Travis: Test against PHP 7.3
+75200c9 Removed jquery dependency from scripts
+5942ce8 Dropped support for PHP 7.1
+cbad0e3 Ignore some phpstorm inspections
+dee0a01 Fixed syntax error in editorconfig
+6ce27ae Moved test dependencies to vendor-bin
+74ba879 Moved assets outside the src dir
+08cc9a5 Removed donation from README
+e2903f0 Updated release config
+ebe559b Updated style config
 23/09/2018 12:39  0.3.0  Minor improvements
 827c7a7 Updated .editorconfig
 f8512c8 Fixed CS
