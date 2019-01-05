@@ -69,7 +69,7 @@ final class Core23AntiSpamExtensionTest extends AbstractExtensionTestCase
         ]);
     }
 
-    protected function getContainerExtensions(): array
+    protected function getContainerExtensions()
     {
         return [
             new Core23AntiSpamExtension(),
