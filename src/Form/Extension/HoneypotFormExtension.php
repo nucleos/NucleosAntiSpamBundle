@@ -55,7 +55,7 @@ final class HoneypotFormExtension extends AbstractTypeExtension
 
         $builder
             ->setAttribute('antispam_honeypot_factory', $builder->getFormFactory())
-            ->addEventSubscriber(new AntiSpamHoneypotListener($this->translator, $options['core23_antispam_field']));
+            ->addEventSubscriber(new AntiSpamHoneypotListener($this->translator, $options['antispam_honeypot_field']));
     }
 
     /**
@@ -67,8 +67,8 @@ final class HoneypotFormExtension extends AbstractTypeExtension
             return;
         }
 
-        if ($form->has($options['core23_antispam_field'])) {
-            throw new \RuntimeException(sprintf('Honeypot field "%s" is already used.', $options['core23_antispam_field']));
+        if ($form->has($options['antispam_honeypot_field'])) {
+            throw new \RuntimeException(sprintf('Honeypot field "%s" is already used.', $options['antispam_honeypot_field']));
         }
 
         $formOptions = [
@@ -94,10 +94,10 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         }
 
         $formView = $factory
-            ->createNamed($options['honeypot_field'], TextType::class, null, $formOptions)
+            ->createNamed($options['antispam_honeypot_field'], TextType::class, null, $formOptions)
             ->createView($view);
 
-        $view->children[$options['honeypot_field']] = $formView;
+        $view->children[$options['antispam_honeypot_field']] = $formView;
     }
 
     /**
