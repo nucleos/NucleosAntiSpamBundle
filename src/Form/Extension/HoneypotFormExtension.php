@@ -55,7 +55,8 @@ final class HoneypotFormExtension extends AbstractTypeExtension
 
         $builder
             ->setAttribute('antispam_honeypot_factory', $builder->getFormFactory())
-            ->addEventSubscriber(new AntiSpamHoneypotListener($this->translator, $options['antispam_honeypot_field']));
+            ->addEventSubscriber(new AntiSpamHoneypotListener($this->translator, $options['antispam_honeypot_field']))
+        ;
     }
 
     /**
@@ -95,7 +96,8 @@ final class HoneypotFormExtension extends AbstractTypeExtension
 
         $formView = $factory
             ->createNamed($options['antispam_honeypot_field'], TextType::class, null, $formOptions)
-            ->createView($view);
+            ->createView($view)
+        ;
 
         $view->children[$options['antispam_honeypot_field']] = $formView;
     }
@@ -113,7 +115,8 @@ final class HoneypotFormExtension extends AbstractTypeExtension
             ])
             ->setAllowedTypes('antispam_honeypot', 'bool')
             ->setAllowedTypes('antispam_honeypot_class', ['string', 'null'])
-            ->setAllowedTypes('antispam_honeypot_field', 'string');
+            ->setAllowedTypes('antispam_honeypot_field', 'string')
+        ;
     }
 
     /**
@@ -123,6 +126,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
     {
         return [
             FormType::class,
-            ];
+        ];
     }
 }

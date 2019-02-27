@@ -69,7 +69,8 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -110,6 +111,7 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('provider')->defaultValue('core23_antispam.provider.session')->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
     }
 }

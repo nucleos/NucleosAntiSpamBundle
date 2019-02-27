@@ -61,7 +61,8 @@ final class Core23AntiSpamExtension extends Extension
     {
         $container
             ->getDefinition('core23_antispam.form.extension.type.time')
-            ->replaceArgument(2, $config['time']);
+            ->replaceArgument(2, $config['time'])
+        ;
     }
 
     /**
@@ -72,7 +73,8 @@ final class Core23AntiSpamExtension extends Extension
     {
         $container
             ->getDefinition('core23_antispam.form.extension.type.honeypot')
-            ->replaceArgument(1, $config['honeypot']);
+            ->replaceArgument(1, $config['honeypot'])
+        ;
 
         $container->setAlias('core23_antispam.provider', $config['honeypot']['provider']);
     }

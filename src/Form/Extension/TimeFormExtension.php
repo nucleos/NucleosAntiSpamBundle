@@ -65,7 +65,8 @@ final class TimeFormExtension extends AbstractTypeExtension
         ];
 
         $builder
-            ->addEventSubscriber(new AntiSpamTimeListener($this->timeProvider, $this->translator, $providerOptions));
+            ->addEventSubscriber(new AntiSpamTimeListener($this->timeProvider, $this->translator, $providerOptions))
+        ;
     }
 
     /**
@@ -93,7 +94,8 @@ final class TimeFormExtension extends AbstractTypeExtension
             ])
             ->setAllowedTypes('antispam_time', 'bool')
             ->setAllowedTypes('antispam_time_min', 'int')
-            ->setAllowedTypes('antispam_time_max', 'int');
+            ->setAllowedTypes('antispam_time_max', 'int')
+        ;
     }
 
     /**
@@ -103,6 +105,6 @@ final class TimeFormExtension extends AbstractTypeExtension
     {
         return [
             FormType::class,
-            ];
+        ];
     }
 }
