@@ -13,9 +13,24 @@ namespace Core23\AntiSpamBundle\Tests\Twig\Extension;
 
 use Core23\AntiSpamBundle\Twig\Extension\StringTwigExtension;
 use PHPUnit\Framework\TestCase;
+use Twig\TwigFilter;
 
 final class StringTwigExtensionTest extends TestCase
 {
+    public function testGetFilters(): void
+    {
+        $extension = new StringTwigExtension('spam', ['[AT]'], ['[DOT]']);
+
+        $filters = $extension->getFilters();
+
+        $this->assertNotCount(0, $filters);
+
+        foreach ($filters as $filter) {
+            $this->assertInstanceOf(TwigFilter::class, $filter);
+            $this->assertIsCallable($filter->getCallable());
+        }
+    }
+
     /**
      * @dataProvider getMailHtml
      *
