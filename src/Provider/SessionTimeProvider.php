@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\AntiSpamBundle\Provider;
 
+use DateTime;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 final class SessionTimeProvider implements TimeProviderInterface
@@ -33,7 +34,7 @@ final class SessionTimeProvider implements TimeProviderInterface
      */
     public function createFormProtection(string $name): void
     {
-        $startTime = new \DateTime();
+        $startTime = new DateTime();
         $key       = $this->getSessionKey($name);
         $this->session->set($key, $startTime);
     }
@@ -49,18 +50,19 @@ final class SessionTimeProvider implements TimeProviderInterface
             return false;
         }
 
-        $currentTime = new \DateTime();
+        $currentTime = new DateTime();
 
-        if (null !== $options['min']) {
+        if (\array_key_exists('min', $options) && null !== $options['min']) {
             $minTime = clone $startTime;
             $minTime->modify(sprintf('+%d seconds', $options['min']));
+
 
             if ($minTime > $currentTime) {
                 return false;
             }
         }
 
-        if (null !== $options['max']) {
+        if (\array_key_exists('max', $options) && null !== $options['max']) {
             $maxTime = clone $startTime;
             $maxTime->modify(sprintf('+%d seconds', $options['max']));
 
@@ -100,9 +102,9 @@ final class SessionTimeProvider implements TimeProviderInterface
      *
      * @param string $name Name of form to get
      *
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    private function getFormTime(string $name): ?\DateTime
+    private function getFormTime(string $name): ?DateTime
     {
         $key = $this->getSessionKey($name);
 
