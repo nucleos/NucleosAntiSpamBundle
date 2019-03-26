@@ -56,7 +56,6 @@ final class SessionTimeProvider implements TimeProviderInterface
             $minTime = clone $startTime;
             $minTime->modify(sprintf('+%d seconds', $options['min']));
 
-
             if ($minTime > $currentTime) {
                 return false;
             }
