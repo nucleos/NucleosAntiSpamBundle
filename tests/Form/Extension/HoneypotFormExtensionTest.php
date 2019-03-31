@@ -179,7 +179,7 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
+            []
         );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
