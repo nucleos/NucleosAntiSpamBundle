@@ -39,8 +39,8 @@ class TimeFormExtensionTest extends TestCase
         $this->assertInstanceOf(FormTypeExtensionInterface::class, new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
-            [],
-            ));
+            []
+        ));
     }
 
     public function testBuildForm(): void
@@ -53,8 +53,8 @@ class TimeFormExtensionTest extends TestCase
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->buildForm($builder->reveal(), [
             'antispam_time'     => true,
             'antispam_time_min' => 10,
@@ -69,8 +69,8 @@ class TimeFormExtensionTest extends TestCase
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->buildForm($builder->reveal(), [
             'antispam_time'     => false,
             'antispam_time_min' => 10,
@@ -95,8 +95,8 @@ class TimeFormExtensionTest extends TestCase
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'          => true,
             'antispam_time'     => true,
@@ -114,8 +114,8 @@ class TimeFormExtensionTest extends TestCase
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'          => true,
             'antispam_time'     => true,
@@ -134,8 +134,8 @@ class TimeFormExtensionTest extends TestCase
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'          => true,
             'antispam_time'     => false,
@@ -157,8 +157,8 @@ class TimeFormExtensionTest extends TestCase
                 'global' => true,
                 'min'    => 10,
                 'max'    => 30,
-            ],
-            );
+            ]
+        );
         $extension->configureOptions($resolver);
 
         $result = $resolver->resolve();

@@ -38,8 +38,8 @@ class HoneypotFormExtensionTest extends TestCase
     {
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
 
         $this->assertInstanceOf(FormTypeExtensionInterface::class, $extension);
     }
@@ -63,8 +63,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->buildForm($builder->reveal(), [
             'antispam_honeypot'       => true,
             'antispam_honeypot_class' => 'spamclass',
@@ -78,8 +78,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->buildForm($builder->reveal(), [
             'antispam_honeypot'       => false,
             'antispam_honeypot_class' => 'spamclass',
@@ -128,8 +128,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
             'antispam_honeypot'       => true,
@@ -180,7 +180,7 @@ class HoneypotFormExtensionTest extends TestCase
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
             [],
-            );
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
             'antispam_honeypot'       => true,
@@ -204,8 +204,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
             'antispam_honeypot'       => true,
@@ -235,8 +235,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
             'antispam_honeypot'       => true,
@@ -252,8 +252,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
             'antispam_honeypot'       => true,
@@ -271,8 +271,8 @@ class HoneypotFormExtensionTest extends TestCase
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
-            [],
-            );
+            []
+        );
         $extension->finishView($view->reveal(), $form->reveal(), [
             'compound'                => true,
             'antispam_honeypot'       => false,
@@ -293,8 +293,8 @@ class HoneypotFormExtensionTest extends TestCase
                 'global' => true,
                 'class'  => 'my-class',
                 'field'  => 'a-field',
-            ],
-            );
+            ]
+        );
         $extension->configureOptions($resolver);
 
         $result = $resolver->resolve();
