@@ -72,28 +72,13 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         if ($form->has($options['antispam_honeypot_field'])) {
             throw new RuntimeException(sprintf('Honeypot field "%s" is already used.', $options['antispam_honeypot_field']));
         }
-
-        $formOptions = [
-            'mapped'   => false,
-            'label'    => false,
-            'required' => false,
-        ];
-
-        if (null === $options['antispam_honeypot_class']) {
-            $formOptions['attr'] = [
-                'style' => 'display:none',
-            ];
-        } else {
-            $formOptions['attr'] = [
-                'class' => $options['antispam_honeypot_class'],
-            ];
-        }
-
         $factory = $form->getConfig()->getAttribute('antispam_honeypot_factory');
 
         if (!$factory instanceof FormFactoryInterface) {
             throw new RuntimeException('Invalid form factory to create a honeyput.');
         }
+
+        $formOptions = $this->createViewOptions($options);
 
         $formView = $factory
             ->createNamed($options['antispam_honeypot_field'], TextType::class, null, $formOptions)
@@ -128,5 +113,31 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         return [
             FormType::class,
         ];
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return array
+     */
+    private function createViewOptions(array $options): array
+    {
+        $formOptions = [
+            'mapped'   => false,
+            'label'    => false,
+            'required' => false,
+        ];
+
+        if (!\array_key_exists('antispam_honeypot_class', $options) || null === $options['antispam_honeypot_class']) {
+            $formOptions['attr'] = [
+                'style' => 'display:none',
+            ];
+        } else {
+            $formOptions['attr'] = [
+                'class' => $options['antispam_honeypot_class'],
+            ];
+        }
+
+        return $formOptions;
     }
 }

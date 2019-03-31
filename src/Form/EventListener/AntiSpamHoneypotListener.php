@@ -65,11 +65,12 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
     public function preSubmit(FormEvent $event): void
     {
         $form = $event->getForm();
-        $data = $event->getData();
 
         if (!$form->isRoot() || !$form->getConfig()->getOption('compound')) {
             return;
         }
+
+        $data = $event->getData();
 
         // Honeypot trap hit
         if (!isset($data[$this->fieldName]) || !empty($data[$this->fieldName])) {
