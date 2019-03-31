@@ -12,3 +12,6 @@ parameters:
         - '#Cannot call method arrayNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
         - '#Cannot call method integerNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
         - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+
+        - '#Access to an undefined property Prophecy\\Prophecy\\ObjectProphecy<Symfony\\Component\\Form\\FormView>::\$children.#'
+        - '#Access to an undefined property Prophecy\\Prophecy\\ObjectProphecy<Symfony\\Component\\Form\\FormView>::\$parent.#'
