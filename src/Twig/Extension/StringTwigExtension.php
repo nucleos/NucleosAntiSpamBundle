@@ -121,9 +121,7 @@ final class StringTwigExtension extends AbstractExtension
     {
         $index = strpos($name, '@');
 
-        if (-1 === $index || false === $index) {
-            return '';
-        }
+        \assert(false !== $index && -1 !== $index);
 
         if ($isDomain) {
             $name = substr($name, $index + 1);
