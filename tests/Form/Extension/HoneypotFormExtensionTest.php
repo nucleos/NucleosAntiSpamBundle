@@ -308,4 +308,14 @@ class HoneypotFormExtensionTest extends TestCase
     {
         $this->assertSame([FormType::class], HoneypotFormExtension::getExtendedTypes());
     }
+
+    public function testExtendedType(): void
+    {
+        $extension = new HoneypotFormExtension(
+            $this->translator->reveal(),
+            []
+        );
+
+        $this->assertSame(FormType::class, $extension->getExtendedType());
+    }
 }
