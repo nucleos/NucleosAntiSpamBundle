@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\AntiSpamBundle\Form\Extension;
 
 use Core23\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
+use RuntimeException;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -69,7 +70,7 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         }
 
         if ($form->has($options['antispam_honeypot_field'])) {
-            throw new \RuntimeException(sprintf('Honeypot field "%s" is already used.', $options['antispam_honeypot_field']));
+            throw new RuntimeException(sprintf('Honeypot field "%s" is already used.', $options['antispam_honeypot_field']));
         }
 
         $formOptions = [
@@ -88,10 +89,10 @@ final class HoneypotFormExtension extends AbstractTypeExtension
             ];
         }
 
-        $factory       = $form->getConfig()->getAttribute('antispam_honeypot_factory');
+        $factory = $form->getConfig()->getAttribute('antispam_honeypot_factory');
 
         if (!$factory instanceof FormFactoryInterface) {
-            throw new \RuntimeException('Invalid form factory to create a honeyput.');
+            throw new RuntimeException('Invalid form factory to create a honeyput.');
         }
 
         $formView = $factory
