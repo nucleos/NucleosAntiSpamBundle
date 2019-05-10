@@ -20,13 +20,13 @@ class Core23AntiSpamBundleTest extends TestCase
     {
         $bundle = new Core23AntiSpamBundle();
 
-        $this->assertInstanceOf(BundleInterface::class, $bundle);
+        static::assertInstanceOf(BundleInterface::class, $bundle);
     }
 
     public function testGetContainerExtension(): void
     {
         $bundle = new Core23AntiSpamBundle();
 
-        $this->assertInstanceOf(Core23AntiSpamExtension::class, $bundle->getContainerExtension());
+        static::assertInstanceOf(Core23AntiSpamExtension::class, $bundle->getContainerExtension());
     }
 }

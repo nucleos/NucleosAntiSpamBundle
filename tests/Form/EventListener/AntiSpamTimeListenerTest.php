@@ -34,7 +34,7 @@ class AntiSpamTimeListenerTest extends TestCase
 
     public function testGetSubscribedEvents(): void
     {
-        $this->assertSame([
+        static::assertSame([
             FormEvents::PRE_SUBMIT => 'preSubmit',
         ], AntiSpamTimeListener::getSubscribedEvents());
     }
@@ -74,7 +74,7 @@ class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testPreSubmitInvalidForm(): void
@@ -147,7 +147,7 @@ class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testPreSubmitCompoundForm(): void
@@ -177,6 +177,6 @@ class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 }

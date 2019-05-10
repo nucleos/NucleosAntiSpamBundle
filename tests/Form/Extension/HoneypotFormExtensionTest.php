@@ -41,7 +41,7 @@ class HoneypotFormExtensionTest extends TestCase
             []
         );
 
-        $this->assertInstanceOf(FormTypeExtensionInterface::class, $extension);
+        static::assertInstanceOf(FormTypeExtensionInterface::class, $extension);
     }
 
     public function testBuildForm(): void
@@ -86,7 +86,7 @@ class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testFinishView(): void
@@ -137,7 +137,7 @@ class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        $this->assertSame($parenView->reveal(), $view->children['hidden-field']);
+        static::assertSame($parenView->reveal(), $view->children['hidden-field']);
     }
 
     public function testFinishWithEmptyClass(): void
@@ -187,7 +187,7 @@ class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        $this->assertSame($parenView->reveal(), $view->children['hidden-field']);
+        static::assertSame($parenView->reveal(), $view->children['hidden-field']);
     }
 
     public function testFinishWithExistingField(): void
@@ -261,7 +261,7 @@ class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testFinishViewWithDisbaledAntispam(): void
@@ -280,7 +280,7 @@ class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testConfigureOptions(): void
@@ -299,14 +299,14 @@ class HoneypotFormExtensionTest extends TestCase
 
         $result = $resolver->resolve();
 
-        $this->assertTrue($result['antispam_honeypot']);
-        $this->assertSame('my-class', $result['antispam_honeypot_class']);
-        $this->assertSame('a-field', $result['antispam_honeypot_field']);
+        static::assertTrue($result['antispam_honeypot']);
+        static::assertSame('my-class', $result['antispam_honeypot_class']);
+        static::assertSame('a-field', $result['antispam_honeypot_field']);
     }
 
     public function testExtendedTypes(): void
     {
-        $this->assertSame([FormType::class], HoneypotFormExtension::getExtendedTypes());
+        static::assertSame([FormType::class], HoneypotFormExtension::getExtendedTypes());
     }
 
     public function testExtendedType(): void
@@ -316,6 +316,6 @@ class HoneypotFormExtensionTest extends TestCase
             []
         );
 
-        $this->assertSame(FormType::class, $extension->getExtendedType());
+        static::assertSame(FormType::class, $extension->getExtendedType());
     }
 }

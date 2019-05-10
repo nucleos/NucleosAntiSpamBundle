@@ -30,7 +30,7 @@ class AntiSpamHoneypotListenerTest extends TestCase
 
     public function testGetSubscribedEvents(): void
     {
-        $this->assertSame([
+        static::assertSame([
             FormEvents::PRE_SUBMIT => 'preSubmit',
         ], AntiSpamHoneypotListener::getSubscribedEvents());
     }
@@ -72,7 +72,7 @@ class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testPreSubmitWithFilledHoneypot(): void
@@ -146,7 +146,7 @@ class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testPreSubmitCompoundForm(): void
@@ -175,6 +175,6 @@ class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 }
