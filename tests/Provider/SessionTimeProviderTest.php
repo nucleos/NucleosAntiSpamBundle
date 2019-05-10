@@ -24,7 +24,7 @@ class SessionTimeProviderTest extends TestCase
 
         $provider = new SessionTimeProvider($session->reveal());
 
-        $this->assertInstanceOf(TimeProviderInterface::class, $provider);
+        static::assertInstanceOf(TimeProviderInterface::class, $provider);
     }
 
     public function testCreateFromString(): void
@@ -44,7 +44,7 @@ class SessionTimeProviderTest extends TestCase
 
         $provider = new SessionTimeProvider($session->reveal());
 
-        $this->assertTrue($provider->isValid('foobar', []));
+        static::assertTrue($provider->isValid('foobar', []));
     }
 
     public function testIsValidWithMinTime(): void
@@ -53,7 +53,7 @@ class SessionTimeProviderTest extends TestCase
 
         $provider = new SessionTimeProvider($session->reveal());
 
-        $this->assertTrue($provider->isValid('foobar', [
+        static::assertTrue($provider->isValid('foobar', [
             'min' => 10,
         ]));
     }
@@ -64,7 +64,7 @@ class SessionTimeProviderTest extends TestCase
 
         $provider = new SessionTimeProvider($session->reveal());
 
-        $this->assertTrue($provider->isValid('foobar', [
+        static::assertTrue($provider->isValid('foobar', [
             'max' => 60,
         ]));
     }
@@ -78,7 +78,7 @@ class SessionTimeProviderTest extends TestCase
 
         $provider = new SessionTimeProvider($session->reveal());
 
-        $this->assertFalse($provider->isValid('foobar', []));
+        static::assertFalse($provider->isValid('foobar', []));
     }
 
     public function testIsInvalidBecauseOfMinTime(): void
@@ -86,7 +86,7 @@ class SessionTimeProviderTest extends TestCase
         $session  = $this->prepareValidSessionKey();
 
         $provider = new SessionTimeProvider($session->reveal());
-        $this->assertFalse($provider->isValid('foobar', [
+        static::assertFalse($provider->isValid('foobar', [
             'min' => 60,
         ]));
     }
@@ -96,7 +96,7 @@ class SessionTimeProviderTest extends TestCase
         $session  = $this->prepareValidSessionKey();
         $provider = new SessionTimeProvider($session->reveal());
 
-        $this->assertFalse($provider->isValid('foobar', [
+        static::assertFalse($provider->isValid('foobar', [
             'max' => 10,
         ]));
     }

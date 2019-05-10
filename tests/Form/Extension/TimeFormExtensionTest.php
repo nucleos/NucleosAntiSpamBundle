@@ -36,7 +36,7 @@ class TimeFormExtensionTest extends TestCase
 
     public function testItIsInstantiable(): void
     {
-        $this->assertInstanceOf(FormTypeExtensionInterface::class, new TimeFormExtension(
+        static::assertInstanceOf(FormTypeExtensionInterface::class, new TimeFormExtension(
             $this->timeProvider->reveal(),
             $this->translator->reveal(),
             []
@@ -77,7 +77,7 @@ class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testFinishView(): void
@@ -123,7 +123,7 @@ class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testFinishViewWithDisbaledAntispam(): void
@@ -143,7 +143,7 @@ class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        $this->assertTrue(true);
+        static::assertTrue(true);
     }
 
     public function testConfigureOptions(): void
@@ -163,14 +163,14 @@ class TimeFormExtensionTest extends TestCase
 
         $result = $resolver->resolve();
 
-        $this->assertTrue($result['antispam_time']);
-        $this->assertSame(10, $result['antispam_time_min']);
-        $this->assertSame(30, $result['antispam_time_max']);
+        static::assertTrue($result['antispam_time']);
+        static::assertSame(10, $result['antispam_time_min']);
+        static::assertSame(30, $result['antispam_time_max']);
     }
 
     public function testExtendedTypes(): void
     {
-        $this->assertSame([FormType::class], TimeFormExtension::getExtendedTypes());
+        static::assertSame([FormType::class], TimeFormExtension::getExtendedTypes());
     }
 
     public function testExtendedType(): void
@@ -181,6 +181,6 @@ class TimeFormExtensionTest extends TestCase
             []
         );
 
-        $this->assertSame(FormType::class, $extension->getExtendedType());
+        static::assertSame(FormType::class, $extension->getExtendedType());
     }
 }

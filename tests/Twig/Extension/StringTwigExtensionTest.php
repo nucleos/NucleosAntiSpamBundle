@@ -23,11 +23,11 @@ final class StringTwigExtensionTest extends TestCase
 
         $filters = $extension->getFilters();
 
-        $this->assertNotCount(0, $filters);
+        static::assertNotCount(0, $filters);
 
         foreach ($filters as $filter) {
-            $this->assertInstanceOf(TwigFilter::class, $filter);
-            $this->assertIsCallable($filter->getCallable());
+            static::assertInstanceOf(TwigFilter::class, $filter);
+            static::assertIsCallable($filter->getCallable());
         }
     }
 
@@ -41,7 +41,7 @@ final class StringTwigExtensionTest extends TestCase
     {
         $extension = new StringTwigExtension('spam', ['[AT]'], ['[DOT]']);
 
-        $this->assertSame($output, $extension->antispam($input));
+        static::assertSame($output, $extension->antispam($input));
     }
 
     /**
@@ -54,7 +54,7 @@ final class StringTwigExtensionTest extends TestCase
     {
         $extension = new StringTwigExtension('spam', ['[AT]'], ['[DOT]']);
 
-        $this->assertSame($output, $extension->antispam($input, false));
+        static::assertSame($output, $extension->antispam($input, false));
     }
 
     /**
