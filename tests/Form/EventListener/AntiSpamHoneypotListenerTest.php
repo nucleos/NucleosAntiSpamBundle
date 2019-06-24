@@ -19,7 +19,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class AntiSpamHoneypotListenerTest extends TestCase
+final class AntiSpamHoneypotListenerTest extends TestCase
 {
     private $translator;
 

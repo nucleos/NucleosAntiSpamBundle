@@ -22,7 +22,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class TimeFormExtensionTest extends TestCase
+final class TimeFormExtensionTest extends TestCase
 {
     private $timeProvider;
 

@@ -20,7 +20,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class AntiSpamTimeListenerTest extends TestCase
+final class AntiSpamTimeListenerTest extends TestCase
 {
     private $timeProvider;
 

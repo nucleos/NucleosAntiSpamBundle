@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class SessionTimeProviderTest extends TestCase
+final class SessionTimeProviderTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {
