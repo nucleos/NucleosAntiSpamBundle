@@ -14,7 +14,7 @@ use Core23\AntiSpamBundle\DependencyInjection\Core23AntiSpamExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
-class Core23AntiSpamBundleTest extends TestCase
+final class Core23AntiSpamBundleTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

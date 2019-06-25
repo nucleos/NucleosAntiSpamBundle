@@ -25,7 +25,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class HoneypotFormExtensionTest extends TestCase
+final class HoneypotFormExtensionTest extends TestCase
 {
     private $translator;
 
