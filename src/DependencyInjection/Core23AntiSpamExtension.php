@@ -43,8 +43,7 @@ final class Core23AntiSpamExtension extends Extension
     }
 
     /**
-     * @param array            $config
-     * @param ContainerBuilder $container
+     * @param array $config
      */
     private function configureTwig($config, ContainerBuilder $container): void
     {
@@ -53,10 +52,6 @@ final class Core23AntiSpamExtension extends Extension
         $container->setParameter('core23_antispam.twig.mail_dot_text', $config['twig']['mail']['dot_text']);
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
     private function configureTime(ContainerBuilder $container, array $config): void
     {
         $container
@@ -65,10 +60,6 @@ final class Core23AntiSpamExtension extends Extension
         ;
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
     private function configureHoneypot(ContainerBuilder $container, array $config): void
     {
         $container

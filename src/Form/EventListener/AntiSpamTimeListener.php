@@ -45,11 +45,6 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
      */
     private $options;
 
-    /**
-     * @param TimeProviderInterface $timeProvider
-     * @param TranslatorInterface   $translator
-     * @param array                 $options
-     */
     public function __construct(TimeProviderInterface $timeProvider, TranslatorInterface $translator, array $options)
     {
         $this->timeProvider      = $timeProvider;
@@ -67,9 +62,6 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param FormEvent $event
-     */
     public function preSubmit(FormEvent $event): void
     {
         $form = $event->getForm();

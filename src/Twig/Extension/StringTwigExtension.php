@@ -35,9 +35,8 @@ final class StringTwigExtension extends AbstractExtension
     private $mailDotText;
 
     /**
-     * @param string|null $mailCssClass
-     * @param string[]    $mailAtText
-     * @param string[]    $mailDotText
+     * @param string[] $mailAtText
+     * @param string[] $mailDotText
      */
     public function __construct(?string $mailCssClass, array $mailAtText, array $mailDotText)
     {
@@ -77,8 +76,6 @@ final class StringTwigExtension extends AbstractExtension
 
     /**
      * @param string[] $matches
-     *
-     * @return string
      */
     private function encryptMailText(array $matches): string
     {
@@ -91,8 +88,6 @@ final class StringTwigExtension extends AbstractExtension
 
     /**
      * @param string[] $matches
-     *
-     * @return string
      */
     private function encryptMail(array $matches): string
     {
@@ -111,12 +106,6 @@ final class StringTwigExtension extends AbstractExtension
             '</span>';
     }
 
-    /**
-     * @param string $name
-     * @param bool   $isDomain
-     *
-     * @return string
-     */
     private function getSecuredName(string $name, bool $isDomain = false): string
     {
         $index = strpos($name, '@');

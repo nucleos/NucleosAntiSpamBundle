@@ -39,9 +39,6 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addTwigSection(ArrayNodeDefinition $node): void
     {
         $node
@@ -73,9 +70,6 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addTimeSection(ArrayNodeDefinition $node): void
     {
         $node
@@ -92,9 +86,6 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addHoneypotSection(ArrayNodeDefinition $node): void
     {
         $node

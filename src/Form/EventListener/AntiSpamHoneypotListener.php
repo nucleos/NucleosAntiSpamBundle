@@ -39,10 +39,6 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
      */
     private $fieldName;
 
-    /**
-     * @param TranslatorInterface $translator
-     * @param string              $fieldName
-     */
     public function __construct(TranslatorInterface $translator, string $fieldName)
     {
         $this->translator        = $translator;
@@ -59,9 +55,6 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param FormEvent $event
-     */
     public function preSubmit(FormEvent $event): void
     {
         $form = $event->getForm();
