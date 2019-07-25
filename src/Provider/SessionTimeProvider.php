@@ -21,9 +21,6 @@ final class SessionTimeProvider implements TimeProviderInterface
      */
     private $session;
 
-    /**
-     * @param Session $session
-     */
     public function __construct(Session $session)
     {
         $this->session = $session;
@@ -84,10 +81,6 @@ final class SessionTimeProvider implements TimeProviderInterface
 
     /**
      * Check if a form has a time protection.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
     private function hasFormProtection(string $name): bool
     {
@@ -100,8 +93,6 @@ final class SessionTimeProvider implements TimeProviderInterface
      * Gets the form time for specified form.
      *
      * @param string $name Name of form to get
-     *
-     * @return DateTime|null
      */
     private function getFormTime(string $name): ?DateTime
     {
@@ -114,11 +105,6 @@ final class SessionTimeProvider implements TimeProviderInterface
         return null;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return string
-     */
     private function getSessionKey(string $name): string
     {
         return 'antispam_'.$name;

@@ -15,23 +15,16 @@ interface TimeProviderInterface
 {
     /**
      * Creates a new form time protection.
-     *
-     * @param string $name
      */
     public function createFormProtection(string $name): void;
 
     /**
      * Clears the form time protection.
-     *
-     * @param string $name
      */
     public function removeFormProtection(string $name): void;
 
     /**
      * Check if the form is valid.
-     *
-     * @param string $name
-     * @param array  $options
      *
      * @return bool $valid
      */

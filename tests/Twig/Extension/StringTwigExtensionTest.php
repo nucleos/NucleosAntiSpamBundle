@@ -33,9 +33,6 @@ final class StringTwigExtensionTest extends TestCase
 
     /**
      * @dataProvider getMailHtml
-     *
-     * @param string $input
-     * @param string $output
      */
     public function testAntispam(string $input, string $output): void
     {
@@ -46,9 +43,6 @@ final class StringTwigExtensionTest extends TestCase
 
     /**
      * @dataProvider getMailText
-     *
-     * @param string $input
-     * @param string $output
      */
     public function testAntispamText(string $input, string $output): void
     {
@@ -57,9 +51,6 @@ final class StringTwigExtensionTest extends TestCase
         static::assertSame($output, $extension->antispam($input, false));
     }
 
-    /**
-     * @return array
-     */
     public function getMailHtml(): array
     {
         // @noinspection JSUnusedLocalSymbols
@@ -88,9 +79,6 @@ final class StringTwigExtensionTest extends TestCase
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMailText(): array
     {
         return [
