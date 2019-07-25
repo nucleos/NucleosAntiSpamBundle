@@ -35,10 +35,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
      */
     private $defaults;
 
-    /**
-     * @param TranslatorInterface $translator
-     * @param array               $defaults
-     */
     public function __construct(TranslatorInterface $translator, array $defaults)
     {
         $this->translator        = $translator;
@@ -125,11 +121,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         ];
     }
 
-    /**
-     * @param array $options
-     *
-     * @return array
-     */
     private function createViewOptions(array $options): array
     {
         $formOptions = [
