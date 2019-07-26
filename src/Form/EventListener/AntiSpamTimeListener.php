@@ -52,9 +52,6 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
         $this->options           = $options;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         return [

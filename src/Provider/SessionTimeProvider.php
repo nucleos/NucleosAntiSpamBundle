@@ -26,9 +26,6 @@ final class SessionTimeProvider implements TimeProviderInterface
         $this->session = $session;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createFormProtection(string $name): void
     {
         $startTime = new DateTime();
@@ -36,9 +33,6 @@ final class SessionTimeProvider implements TimeProviderInterface
         $this->session->set($key, $startTime);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isValid(string $name, array $options): bool
     {
         $startTime = $this->getFormTime($name);
@@ -70,9 +64,6 @@ final class SessionTimeProvider implements TimeProviderInterface
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeFormProtection(string $name): void
     {
         $key = $this->getSessionKey($name);

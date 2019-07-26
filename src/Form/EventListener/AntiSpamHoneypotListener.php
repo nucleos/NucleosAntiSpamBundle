@@ -45,9 +45,6 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
         $this->fieldName         = $fieldName;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         return [

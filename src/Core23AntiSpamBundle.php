@@ -16,9 +16,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class Core23AntiSpamBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getContainerExtension()
     {
         if (null === $this->extension) {

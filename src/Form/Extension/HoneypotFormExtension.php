@@ -41,9 +41,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         $this->defaults          = $defaults;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if (!$options['antispam_honeypot']) {
@@ -56,9 +53,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         if ($view->parent || !$options['antispam_honeypot'] || !$options['compound']) {
@@ -84,9 +78,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         $view->children[$options['antispam_honeypot_field']] = $formView;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
@@ -101,9 +92,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExtendedType()
     {
         foreach (static::getExtendedTypes() as $extendedType) {
@@ -111,9 +99,6 @@ final class HoneypotFormExtension extends AbstractTypeExtension
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
         return [
