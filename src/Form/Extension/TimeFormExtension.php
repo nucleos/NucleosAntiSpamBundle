@@ -45,9 +45,6 @@ final class TimeFormExtension extends AbstractTypeExtension
         $this->defaults          = $defaults;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if (!$options['antispam_time']) {
@@ -64,9 +61,6 @@ final class TimeFormExtension extends AbstractTypeExtension
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         if ($view->parent || !$options['antispam_time'] || !$options['compound']) {
@@ -76,9 +70,6 @@ final class TimeFormExtension extends AbstractTypeExtension
         $this->timeProvider->createFormProtection($form->getName());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
@@ -93,9 +84,6 @@ final class TimeFormExtension extends AbstractTypeExtension
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExtendedType()
     {
         foreach (static::getExtendedTypes() as $extendedType) {
@@ -103,9 +91,6 @@ final class TimeFormExtension extends AbstractTypeExtension
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
         return [

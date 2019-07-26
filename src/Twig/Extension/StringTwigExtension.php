@@ -45,9 +45,6 @@ final class StringTwigExtension extends AbstractExtension
         $this->mailDotText  = $mailDotText;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFilters()
     {
         return [
