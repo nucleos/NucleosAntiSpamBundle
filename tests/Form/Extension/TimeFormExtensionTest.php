@@ -28,7 +28,7 @@ final class TimeFormExtensionTest extends TestCase
 
     private $translator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->timeProvider = $this->prophesize(TimeProviderInterface::class);
         $this->translator   = $this->prophesize(TranslatorInterface::class);

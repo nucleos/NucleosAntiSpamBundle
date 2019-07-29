@@ -23,7 +23,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
 {
     private $translator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->translator  =  $this->prophesize(TranslatorInterface::class);
     }
