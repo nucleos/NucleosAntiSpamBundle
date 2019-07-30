@@ -71,8 +71,6 @@ final class AntiSpamHoneypotListenerTest extends TestCase
             'my-field'
         );
         $listener->preSubmit($event->reveal());
-
-        static::assertTrue(true);
     }
 
     public function testPreSubmitWithFilledHoneypot(): void
@@ -146,7 +144,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        static::assertTrue(true);
+        $form->addError(Argument::any())->shouldNotHaveBeenCalled();
     }
 
     public function testPreSubmitCompoundForm(): void
@@ -175,6 +173,6 @@ final class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        static::assertTrue(true);
+        $form->addError(Argument::any())->shouldNotHaveBeenCalled();
     }
 }

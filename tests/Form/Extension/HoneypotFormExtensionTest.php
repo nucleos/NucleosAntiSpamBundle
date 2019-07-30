@@ -20,7 +20,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormTypeExtensionInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -32,16 +31,6 @@ final class HoneypotFormExtensionTest extends TestCase
     protected function setUp(): void
     {
         $this->translator   = $this->prophesize(TranslatorInterface::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $extension = new HoneypotFormExtension(
-            $this->translator->reveal(),
-            []
-        );
-
-        static::assertInstanceOf(FormTypeExtensionInterface::class, $extension);
     }
 
     public function testBuildForm(): void
@@ -86,7 +75,9 @@ final class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        static::assertTrue(true);
+        $builder->addEventSubscriber(Argument::type(AntiSpamHoneypotListener::class))
+            ->shouldNotHaveBeenCalled()
+        ;
     }
 
     public function testFinishView(): void
@@ -249,6 +240,9 @@ final class HoneypotFormExtensionTest extends TestCase
         $view         = $this->prophesize(FormView::class);
         $view->parent = $this->prophesize(FormView::class)->reveal();
         $form         = $this->prophesize(FormInterface::class);
+        $form->getConfig()
+            ->shouldNotBeCalled()
+        ;
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
@@ -260,14 +254,15 @@ final class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_class' => 'spamclass',
             'antispam_honeypot_field' => 'hidden-field',
         ]);
-
-        static::assertTrue(true);
     }
 
     public function testFinishViewWithDisbaledAntispam(): void
     {
         $view = $this->prophesize(FormView::class);
         $form = $this->prophesize(FormInterface::class);
+        $form->getConfig()
+            ->shouldNotBeCalled()
+        ;
 
         $extension = new HoneypotFormExtension(
             $this->translator->reveal(),
@@ -279,8 +274,6 @@ final class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_class' => 'spamclass',
             'antispam_honeypot_field' => 'hidden-field',
         ]);
-
-        static::assertTrue(true);
     }
 
     public function testConfigureOptions(): void
