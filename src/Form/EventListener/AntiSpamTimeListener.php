@@ -63,7 +63,7 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
     {
         $form = $event->getForm();
 
-        if (!$form->isRoot() || !$form->getConfig()->getOption('compound')) {
+        if (!$form->isRoot() || null === $form->getConfig()->getOption('compound')) {
             return;
         }
 

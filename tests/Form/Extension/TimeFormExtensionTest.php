@@ -17,7 +17,6 @@ use Prophecy\Argument;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormTypeExtensionInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -28,26 +27,17 @@ final class TimeFormExtensionTest extends TestCase
 
     private $translator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->timeProvider = $this->prophesize(TimeProviderInterface::class);
         $this->translator   = $this->prophesize(TranslatorInterface::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        static::assertInstanceOf(FormTypeExtensionInterface::class, new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
-            []
-        ));
     }
 
     public function testBuildForm(): void
     {
         $builder = $this->prophesize(FormBuilderInterface::class);
         $builder->addEventSubscriber(Argument::type(AntiSpamTimeListener::class))
-        ->shouldBeCalled()
+            ->shouldBeCalled()
         ;
 
         $extension = new TimeFormExtension(
@@ -60,11 +50,18 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_min' => 10,
             'antispam_time_max' => 30,
         ]);
+
+        $builder->addEventSubscriber(Argument::type(AntiSpamTimeListener::class))
+            ->shouldBeCalled()
+        ;
     }
 
     public function testBuildFormWithDisabledAntispam(): void
     {
         $builder = $this->prophesize(FormBuilderInterface::class);
+        $builder->addEventSubscriber(Argument::type(AntiSpamTimeListener::class))
+            ->shouldNotBeCalled()
+        ;
 
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
@@ -76,8 +73,6 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_min' => 10,
             'antispam_time_max' => 30,
         ]);
-
-        static::assertTrue(true);
     }
 
     public function testFinishView(): void
@@ -110,6 +105,9 @@ final class TimeFormExtensionTest extends TestCase
         $view         = $this->prophesize(FormView::class);
         $view->parent = $this->prophesize(FormView::class)->reveal();
         $form         = $this->prophesize(FormInterface::class);
+        $form->getName()
+            ->willReturn('my_form')
+        ;
 
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
@@ -123,13 +121,18 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        static::assertTrue(true);
+        $this->timeProvider->createFormProtection('my_form')
+            ->shouldNotHaveBeenCalled()
+        ;
     }
 
     public function testFinishViewWithDisbaledAntispam(): void
     {
         $view = $this->prophesize(FormView::class);
         $form = $this->prophesize(FormInterface::class);
+        $form->getName()
+            ->willReturn('my_form')
+        ;
 
         $extension = new TimeFormExtension(
             $this->timeProvider->reveal(),
@@ -143,7 +146,9 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        static::assertTrue(true);
+        $this->timeProvider->createFormProtection('my_form')
+            ->shouldNotHaveBeenCalled()
+        ;
     }
 
     public function testConfigureOptions(): void

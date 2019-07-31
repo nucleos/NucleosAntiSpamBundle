@@ -95,11 +95,11 @@ final class StringTwigExtension extends AbstractExtension
         }
 
         return
-            '<span'.(!empty($this->mailCssClass) ? ' class="'.$this->mailCssClass.'"' : '').'>'.
+            '<span'.(null !== $this->mailCssClass ? ' class="'.$this->mailCssClass.'"' : '').'>'.
             '<span>'.$this->getSecuredName($email).'</span>'.
                 $this->mailAtText[array_rand($this->mailAtText)].
             '<span>'.$this->getSecuredName($email, true).'</span>'.
-            ($text ? ' (<span>'.$text.'</span>)' : '').
+            ('' !== $text ? ' (<span>'.$text.'</span>)' : '').
             '</span>';
     }
 

@@ -12,17 +12,9 @@ namespace Core23\AntiSpamBundle\Tests;
 use Core23\AntiSpamBundle\Core23AntiSpamBundle;
 use Core23\AntiSpamBundle\DependencyInjection\Core23AntiSpamExtension;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 final class Core23AntiSpamBundleTest extends TestCase
 {
-    public function testItIsInstantiable(): void
-    {
-        $bundle = new Core23AntiSpamBundle();
-
-        static::assertInstanceOf(BundleInterface::class, $bundle);
-    }
-
     public function testGetContainerExtension(): void
     {
         $bundle = new Core23AntiSpamBundle();

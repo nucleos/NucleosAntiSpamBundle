@@ -13,6 +13,7 @@ use Core23\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
 use Core23\AntiSpamBundle\Provider\TimeProviderInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
@@ -26,7 +27,7 @@ final class AntiSpamTimeListenerTest extends TestCase
 
     private $translator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->timeProvider = $this->prophesize(TimeProviderInterface::class);
         $this->translator   =  $this->prophesize(TranslatorInterface::class);
@@ -44,23 +45,16 @@ final class AntiSpamTimeListenerTest extends TestCase
         $this->timeProvider->isValid('my-form', ['foo' => 'bar'])
             ->willReturn(true)
         ;
-        $this->timeProvider->removeFormProtection('my-form');
+        $this->timeProvider->removeFormProtection('my-form')
+            ->shouldBeCalled()
+        ;
 
         $config = $this->prophesize(FormConfigInterface::class);
         $config->getOption('compound')
             ->willReturn(true)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
-            ->willReturn(true)
-        ;
-        $form->getConfig()
-            ->willReturn($config)
-        ;
-        $form->getName()
-            ->willReturn('my-form')
-        ;
+        $form = $this->prepareForm($config, true);
 
         $event = $this->prophesize(FormEvent::class);
         $event->getForm()
@@ -73,8 +67,6 @@ final class AntiSpamTimeListenerTest extends TestCase
             ['foo' => 'bar']
         );
         $listener->preSubmit($event->reveal());
-
-        static::assertTrue(true);
     }
 
     public function testPreSubmitInvalidForm(): void
@@ -86,23 +78,16 @@ final class AntiSpamTimeListenerTest extends TestCase
         $this->timeProvider->isValid('my-form', ['foo' => 'bar'])
             ->willReturn(false)
         ;
-        $this->timeProvider->removeFormProtection('my-form');
+        $this->timeProvider->removeFormProtection('my-form')
+            ->shouldBeCalled()
+        ;
 
         $config = $this->prophesize(FormConfigInterface::class);
         $config->getOption('compound')
             ->willReturn(true)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
-            ->willReturn(true)
-        ;
-        $form->getConfig()
-            ->willReturn($config)
-        ;
-        $form->getName()
-            ->willReturn('my-form')
-        ;
+        $form = $this->prepareForm($config, true);
         $form->addError(Argument::type(FormError::class))
             ->shouldBeCalled()
         ;
@@ -127,13 +112,7 @@ final class AntiSpamTimeListenerTest extends TestCase
             ->willReturn(false)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
-            ->willReturn(false)
-        ;
-        $form->getConfig()
-            ->willReturn($config)
-        ;
+        $form = $this->prepareForm($config);
 
         $event = $this->prophesize(FormEvent::class);
         $event->getForm()
@@ -147,7 +126,9 @@ final class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        static::assertTrue(true);
+        $this->timeProvider->removeFormProtection('my-form')
+            ->shouldNotHaveBeenCalled()
+        ;
     }
 
     public function testPreSubmitCompoundForm(): void
@@ -157,13 +138,7 @@ final class AntiSpamTimeListenerTest extends TestCase
             ->willReturn(true)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
-            ->willReturn(false)
-        ;
-        $form->getConfig()
-            ->willReturn($config)
-        ;
+        $form = $this->prepareForm($config);
 
         $event = $this->prophesize(FormEvent::class);
         $event->getForm()
@@ -177,6 +152,29 @@ final class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event->reveal());
 
-        static::assertTrue(true);
+        $this->timeProvider->removeFormProtection('my-form')
+            ->shouldNotHaveBeenCalled()
+        ;
+    }
+
+    /**
+     * @param FormConfigInterface|ObjectProphecy $config
+     *
+     * @return FormInterface|ObjectProphecy
+     */
+    private function prepareForm($config, bool $root = false)
+    {
+        $form = $this->prophesize(FormInterface::class);
+        $form->isRoot()
+            ->willReturn($root)
+        ;
+        $form->getConfig()
+            ->willReturn($config)
+        ;
+        $form->getName()
+            ->willReturn('my-form')
+        ;
+
+        return $form;
     }
 }

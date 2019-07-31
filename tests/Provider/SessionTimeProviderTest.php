@@ -10,23 +10,14 @@
 namespace Core23\AntiSpamBundle\Tests\Provider;
 
 use Core23\AntiSpamBundle\Provider\SessionTimeProvider;
-use Core23\AntiSpamBundle\Provider\TimeProviderInterface;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 final class SessionTimeProviderTest extends TestCase
 {
-    public function testItIsInstantiable(): void
-    {
-        $session = $this->prophesize(Session::class);
-
-        $provider = new SessionTimeProvider($session->reveal());
-
-        static::assertInstanceOf(TimeProviderInterface::class, $provider);
-    }
-
     public function testCreateFromString(): void
     {
         $session = $this->prophesize(Session::class);
@@ -112,6 +103,9 @@ final class SessionTimeProviderTest extends TestCase
         $provider->removeFormProtection('foobar');
     }
 
+    /**
+     * @return ObjectProphecy|Session
+     */
     private function prepareValidSessionKey()
     {
         $session = $this->prophesize(Session::class);
