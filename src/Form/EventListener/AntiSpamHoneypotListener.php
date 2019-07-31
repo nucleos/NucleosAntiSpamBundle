@@ -56,14 +56,14 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
     {
         $form = $event->getForm();
 
-        if (!$form->isRoot() || !$form->getConfig()->getOption('compound')) {
+        if (!$form->isRoot() || null === $form->getConfig()->getOption('compound')) {
             return;
         }
 
         $data = $event->getData();
 
         // Honeypot trap hit
-        if (!isset($data[$this->fieldName]) || !empty($data[$this->fieldName])) {
+        if (!isset($data[$this->fieldName]) || '' !== (string) $data[$this->fieldName]) {
             $form->addError(new FormError($this->translator->trans(static::ERROR_MESSAGE, [], static::TRANSLATION_DOMAIN)));
         }
 
