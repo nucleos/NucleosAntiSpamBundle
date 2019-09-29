@@ -51,7 +51,7 @@ final class StringTwigExtensionTest extends TestCase
         static::assertSame($output, $extension->antispam($input, false));
     }
 
-    public function getMailHtml(): array
+    public function getMailHtml(): iterable
     {
         // @noinspection JSUnusedLocalSymbols
         return [
@@ -79,7 +79,7 @@ final class StringTwigExtensionTest extends TestCase
         ];
     }
 
-    public function getMailText(): array
+    public function getMailText(): iterable
     {
         return [
             [
