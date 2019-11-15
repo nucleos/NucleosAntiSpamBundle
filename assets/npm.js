@@ -1,1 +1,3 @@
-import './js/AntiSpam';
+import AntiSpam from './js/AntiSpam';
+
+export default AntiSpam
