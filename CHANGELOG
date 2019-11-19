@@ -1,3 +1,26 @@
+19/11/2019 17:50  1.2.0  Removed explicit private visibility of services
+bc752b0 [PATCH] Export js modules
+9845a3f [TEST] Internal refactoring
+c04d9e7 [BUILD] Simplify rmt config
+69b4a00 [BUILD] Remove nightly build from Travis
+d55dc20 [BUILD] Fixed wrong branch alias
+2c6afae [BUILD] Added project specific phpstan settings
+7fce8b5 [DOCS] Improved docs for installation
+816ec09 [BUILD] Use phpunit 8
+ce1775c [TEST] Added return types
+5f53f50 [MINOR] Removed explicit private visibility of services
+0b811ee [TEST] Fixed phpstan findings
+8914ef3 [PATCH] Use more precise null and type checks
+a2503c9 [TEST] Added return type to setUp method
+bbfbc33 [BUILD] Remove include from phpstan config
+c915fc1 [BUILD] Added more strict phpstan rules
+aa097cd [PATCH] Removed superfluous PHPDoc
+a817659 [BUILD] Updated CS config
+749a1b8 [BUILD] Added kodiak config
+128367d [BUILD] Include phpstan-prophecy extension
+566a6f1 [BUILD] Removed superfluous phpdoc
+d48498b [BUILD] Added more phpstan checks
+69ef231 PATCH] Make test classes final (#8)
 11/06/2019 19:17  1.1.0  Internal code refactoring
 b259dc9 [BUILD] Replaced deprecated "weak_vendors" option (#6)
 4bbc0de Added GitHub sponsoring information (#5)
