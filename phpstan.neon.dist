@@ -15,7 +15,6 @@ parameters:
         - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
         - '#Access to an undefined property Prophecy\\Prophecy\\ObjectProphecy<Symfony\\Component\\Form\\FormView>::\$children.#'
         - '#Access to an undefined property Prophecy\\Prophecy\\ObjectProphecy<Symfony\\Component\\Form\\FormView>::\$parent.#'
-        - "/Call to function method_exists.. with 'Symfony.+' and 'getRootNode' will always evaluate to false./"
 
         # PHPUnit
         -
@@ -24,8 +23,3 @@ parameters:
         -
             message: "#Call to static method .+Assert::assertInstanceOf.. with 'Twig.+' and Twig.+ will always evaluate to true.#"
             path: tests/Twig/Extension/
-
-        -
-            message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\TreeBuilder::root\\(\\)\\.$#"
-            count: 1
-            path: src/DependencyInjection/Configuration.php
