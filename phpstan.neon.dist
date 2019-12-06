@@ -24,3 +24,8 @@ parameters:
         -
             message: "#Call to static method .+Assert::assertInstanceOf.. with 'Twig.+' and Twig.+ will always evaluate to true.#"
             path: tests/Twig/Extension/
+
+        -
+            message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\TreeBuilder::root\\(\\)\\.$#"
+            count: 1
+            path: src/DependencyInjection/Configuration.php
