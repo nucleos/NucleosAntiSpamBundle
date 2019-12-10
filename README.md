@@ -8,10 +8,8 @@ AntiSpamBundle
 [![Monthly Downloads](https://poser.pugx.org/core23/antispam-bundle/d/monthly)](https://packagist.org/packages/core23/antispam-bundle)
 [![Daily Downloads](https://poser.pugx.org/core23/antispam-bundle/d/daily)](https://packagist.org/packages/core23/antispam-bundle)
 
-[![Build Status](https://travis-ci.org/core23/AntiSpamBundle.svg)](https://travis-ci.org/core23/AntiSpamBundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/AntiSpamBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/core23/AntiSpamBundle)
-[![Code Climate](https://codeclimate.com/github/core23/AntiSpamBundle/badges/gpa.svg)](https://codeclimate.com/github/core23/AntiSpamBundle)
-[![Coverage Status](https://coveralls.io/repos/core23/AntiSpamBundle/badge.svg)](https://coveralls.io/r/core23/AntiSpamBundle)
+[![Continuous Integration](https://github.com/core23/AntiSpamBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/AntiSpamBundle/actions)
+[![Code Coverage](https://codecov.io/gh/core23/AntiSpamBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/AntiSpamBundle)
 
 This bundle provides some basic features to reduce spam in symfony.
 
@@ -48,7 +46,7 @@ $this->createForm(CustomFormType:class, null, array(
     'antispam_time'     => true,
     'antispam_time_min' => 10,
     'antispam_time_max' => 60,
-    
+
     // Honeypot protection
     'antispam_honeypot'       => true,
     'antispam_honeypot_class' => 'hide-me',
@@ -76,7 +74,7 @@ $(document).ready(function () {
 
 ```
 
-It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore) 
+It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
 to include the JavaScript library in your page. These file is located in the `assets` folder.
 
 ### Global protection
@@ -90,7 +88,7 @@ core23_antispam:
     # Time protection
     time:
         global: true
-        
+
     # Honeypot protection
     honeypot:
         global: true
@@ -110,13 +108,13 @@ core23_antispam:
             css_class: 'custom_class'
             at_text:   [ '[DOT]', '(DOT)', '[.]' ]
             dot_text:  [ '[AT]', '(AT)', '[ÄT]' ]
-        
+
     # Time protection
     time:
         min: 5
         max: 3600
         global: false
-        
+
     # Honeypot protection
     honeypot:
         field: 'email_address'
@@ -127,7 +125,7 @@ core23_antispam:
 
 ### Assets
 
-It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore) 
+It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
 to include the `AntiSpam.js` file in your page. These file is located in the `assets` folder.
 
 ## License
