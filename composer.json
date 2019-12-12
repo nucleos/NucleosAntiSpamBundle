@@ -1,7 +1,7 @@
 {
   "name": "core23/antispam-bundle",
   "type": "symfony-bundle",
-  "description": "This bundle provides some basic features to reduce spam.",
+  "description": "This bundle provides some basic features to reduce spam in symfony forms.",
   "keywords": [
     "symfony",
     "bundle",
