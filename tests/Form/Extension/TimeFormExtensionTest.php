@@ -179,15 +179,4 @@ final class TimeFormExtensionTest extends TestCase
     {
         static::assertSame([FormType::class], TimeFormExtension::getExtendedTypes());
     }
-
-    public function testExtendedType(): void
-    {
-        $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
-            []
-        );
-
-        static::assertSame(FormType::class, $extension->getExtendedType());
-    }
 }
