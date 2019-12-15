@@ -19,7 +19,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamHoneypotListenerTest extends TestCase
 {
@@ -27,7 +27,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->translator  =  $this->prophesize(TranslatorInterface::class);
+        $this->translator = $this->prophesize(TranslatorInterface::class);
     }
 
     public function testGetSubscribedEvents(): void
