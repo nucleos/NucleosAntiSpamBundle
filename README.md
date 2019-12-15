@@ -68,7 +68,7 @@ $this->createForm(CustomFormType:class, null, array(
 If you want a JavaScript decoding for the encoded mails, you should use the `AntiSpam.js` library:
 
 ```javascript
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', () => {
   new AntiSpam('.custom_class');
 });
 
