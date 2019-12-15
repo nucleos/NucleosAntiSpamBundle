@@ -4,7 +4,7 @@
     <service id="core23_antispam.form.extension.type.honeypot" class="Core23\AntiSpamBundle\Form\Extension\HoneypotFormExtension">
       <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="translator"/>
-      <argument/>
+      <argument type="collection"/>
     </service>
     <service id="core23_antispam.provider.session" class="Core23\AntiSpamBundle\Provider\SessionTimeProvider">
       <argument type="service" id="session"/>
@@ -13,7 +13,7 @@
       <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="core23_antispam.provider"/>
       <argument type="service" id="translator"/>
-      <argument/>
+      <argument type="collection"/>
     </service>
     <service id="core23_antispam.twig.string_extension" class="Core23\AntiSpamBundle\Twig\Extension\StringTwigExtension">
       <tag name="twig.extension"/>
