@@ -1,7 +1,8 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
     level: max
-
-    checkMissingIterableValueType: false
 
     paths:
         - src
@@ -10,18 +11,5 @@ parameters:
     autoload_files:
         - vendor-bin/test/vendor/autoload.php
 
-    ignoreErrors:
-        # Symfony DI
-        - '#Cannot call method arrayNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - '#Cannot call method integerNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - '#Access to an undefined property Prophecy\\Prophecy\\ObjectProphecy<Symfony\\Component\\Form\\FormView>::\$children.#'
-        - '#Access to an undefined property Prophecy\\Prophecy\\ObjectProphecy<Symfony\\Component\\Form\\FormView>::\$parent.#'
-
-        # PHPUnit
-        -
-            message: '#Property .*::\$.* has no typehint specified.#'
-            path: tests/
-        -
-            message: "#Call to static method .+Assert::assertInstanceOf.. with 'Twig.+' and Twig.+ will always evaluate to true.#"
-            path: tests/Twig/Extension/
+    excludes_analyse:
+        - tests/bootstrap.php
