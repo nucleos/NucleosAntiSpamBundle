@@ -96,13 +96,13 @@ parameters:
 			path: tests/Form/EventListener/AntiSpamHoneypotListenerTest.php
 
 		-
-			message: "#^Property Core23\\\\AntiSpamBundle\\\\Tests\\\\Form\\\\EventListener\\\\AntiSpamTimeListenerTest\\:\\:\\$timeProvider has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$timeProvider of class Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener constructor expects Core23\\\\AntiSpamBundle\\\\Provider\\\\TimeProviderInterface, object given\\.$#"
+			count: 4
 			path: tests/Form/EventListener/AntiSpamTimeListenerTest.php
 
 		-
-			message: "#^Property Core23\\\\AntiSpamBundle\\\\Tests\\\\Form\\\\EventListener\\\\AntiSpamTimeListenerTest\\:\\:\\$translator has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#2 \\$translator of class Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
+			count: 4
 			path: tests/Form/EventListener/AntiSpamTimeListenerTest.php
 
 		-
