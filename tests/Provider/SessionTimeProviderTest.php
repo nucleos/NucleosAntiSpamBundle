@@ -108,7 +108,7 @@ final class SessionTimeProviderTest extends TestCase
     /**
      * @return ObjectProphecy|Session
      */
-    private function prepareValidSessionKey()
+    private function prepareValidSessionKey(): ObjectProphecy
     {
         $session = $this->prophesize(Session::class);
         $session->has('antispam_foobar')

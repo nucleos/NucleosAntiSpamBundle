@@ -16,6 +16,7 @@ use Core23\AntiSpamBundle\Form\Extension\TimeFormExtension;
 use Core23\AntiSpamBundle\Provider\TimeProviderInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -25,8 +26,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class TimeFormExtensionTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $timeProvider;
 
+    /**
+     * @var ObjectProphecy
+     */
     private $translator;
 
     protected function setUp(): void
