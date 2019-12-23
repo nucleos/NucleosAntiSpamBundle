@@ -14,6 +14,7 @@ namespace Core23\AntiSpamBundle\Tests\Form\EventListener;
 use Core23\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
@@ -23,6 +24,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamHoneypotListenerTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $translator;
 
     protected function setUp(): void

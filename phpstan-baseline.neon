@@ -91,8 +91,8 @@ parameters:
 			path: src/Provider/TimeProviderInterface.php
 
 		-
-			message: "#^Property Core23\\\\AntiSpamBundle\\\\Tests\\\\Form\\\\EventListener\\\\AntiSpamHoneypotListenerTest\\:\\:\\$translator has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$translator of class Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamHoneypotListener constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
+			count: 4
 			path: tests/Form/EventListener/AntiSpamHoneypotListenerTest.php
 
 		-
@@ -106,8 +106,8 @@ parameters:
 			path: tests/Form/EventListener/AntiSpamTimeListenerTest.php
 
 		-
-			message: "#^Property Core23\\\\AntiSpamBundle\\\\Tests\\\\Form\\\\Extension\\\\HoneypotFormExtensionTest\\:\\:\\$translator has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$translator of class Core23\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\HoneypotFormExtension constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
+			count: 9
 			path: tests/Form/Extension/HoneypotFormExtensionTest.php
 
 		-
@@ -121,13 +121,13 @@ parameters:
 			path: tests/Form/Extension/HoneypotFormExtensionTest.php
 
 		-
-			message: "#^Property Core23\\\\AntiSpamBundle\\\\Tests\\\\Form\\\\Extension\\\\TimeFormExtensionTest\\:\\:\\$timeProvider has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$timeProvider of class Core23\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension constructor expects Core23\\\\AntiSpamBundle\\\\Provider\\\\TimeProviderInterface, object given\\.$#"
+			count: 6
 			path: tests/Form/Extension/TimeFormExtensionTest.php
 
 		-
-			message: "#^Property Core23\\\\AntiSpamBundle\\\\Tests\\\\Form\\\\Extension\\\\TimeFormExtensionTest\\:\\:\\$translator has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#2 \\$translator of class Core23\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
+			count: 6
 			path: tests/Form/Extension/TimeFormExtensionTest.php
 
 		-
@@ -142,11 +142,6 @@ parameters:
 
 		-
 			message: "#^Method Core23\\\\AntiSpamBundle\\\\Tests\\\\Twig\\\\Extension\\\\StringTwigExtensionTest\\:\\:getMailHtml\\(\\) return type has no value type specified in iterable type iterable\\.$#"
-			count: 1
-			path: tests/Twig/Extension/StringTwigExtensionTest.php
-
-		-
-			message: "#^Method Core23\\\\AntiSpamBundle\\\\Tests\\\\Twig\\\\Extension\\\\StringTwigExtensionTest\\:\\:getMailText\\(\\) return type has no value type specified in iterable type iterable\\.$#"
 			count: 1
 			path: tests/Twig/Extension/StringTwigExtensionTest.php
 

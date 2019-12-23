@@ -15,6 +15,7 @@ use Core23\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
 use Core23\AntiSpamBundle\Form\Extension\HoneypotFormExtension;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use RuntimeException;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,6 +29,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class HoneypotFormExtensionTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $translator;
 
     protected function setUp(): void

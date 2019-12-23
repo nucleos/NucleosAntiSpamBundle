@@ -79,6 +79,9 @@ final class StringTwigExtensionTest extends TestCase
         ];
     }
 
+    /**
+     * @return string[][]
+     */
     public function getMailText(): iterable
     {
         return [
