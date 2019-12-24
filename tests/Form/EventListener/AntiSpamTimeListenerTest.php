@@ -25,8 +25,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamTimeListenerTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $timeProvider;
 
+    /**
+     * @var ObjectProphecy
+     */
     private $translator;
 
     protected function setUp(): void
