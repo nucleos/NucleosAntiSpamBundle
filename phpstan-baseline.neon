@@ -21,22 +21,12 @@ parameters:
 			path: src/DependencyInjection/Core23AntiSpamExtension.php
 
 		-
-			message: "#^Method Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamHoneypotListener\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/EventListener/AntiSpamHoneypotListener.php
-
-		-
 			message: "#^Property Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/EventListener/AntiSpamTimeListener.php
 
 		-
 			message: "#^Method Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/EventListener/AntiSpamTimeListener.php
-
-		-
-			message: "#^Method Core23\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/EventListener/AntiSpamTimeListener.php
 
