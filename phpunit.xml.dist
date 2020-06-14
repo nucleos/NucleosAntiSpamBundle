@@ -4,7 +4,7 @@
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
   </php>
   <testsuites>
-    <testsuite name="AntiSpamBundle Test Suite">
+    <testsuite name="NucleosAntiSpamBundle Test Suite">
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>

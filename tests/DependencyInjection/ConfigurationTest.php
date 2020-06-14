@@ -3,15 +3,17 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\Tests\DependencyInjection;
+namespace Nucleos\AntiSpamBundle\Tests\DependencyInjection;
 
-use Core23\AntiSpamBundle\DependencyInjection\Configuration;
+use Nucleos\AntiSpamBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
@@ -41,7 +43,7 @@ final class ConfigurationTest extends TestCase
                 'field'      => 'email_address',
                 'class'      => 'hidden',
                 'global'     => false,
-                'provider'   => 'core23_antispam.provider.session',
+                'provider'   => 'nucleos_antispam.provider.session',
             ],
         ];
 
@@ -69,7 +71,7 @@ final class ConfigurationTest extends TestCase
                 'field'      => 'custom',
                 'class'      => 'hide',
                 'global'     => true,
-                'provider'   => 'core23_antispam.provider.custom',
+                'provider'   => 'nucleos_antispam.provider.custom',
             ],
         ]]);
 
@@ -90,7 +92,7 @@ final class ConfigurationTest extends TestCase
                 'field'      => 'custom',
                 'class'      => 'hide',
                 'global'     => true,
-                'provider'   => 'core23_antispam.provider.custom',
+                'provider'   => 'nucleos_antispam.provider.custom',
             ],
         ];
 

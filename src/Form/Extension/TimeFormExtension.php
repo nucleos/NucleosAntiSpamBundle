@@ -3,16 +3,18 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\Form\Extension;
+namespace Nucleos\AntiSpamBundle\Form\Extension;
 
-use Core23\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
-use Core23\AntiSpamBundle\Provider\TimeProviderInterface;
+use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
+use Nucleos\AntiSpamBundle\Provider\TimeProviderInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -1,7 +1,7 @@
 {
-  "name": "@core23/antispam-bundle",
+  "name": "@nucleos/antispam-bundle",
   "version": "1.0.0",
-  "homepage": "https://core23.de",
+  "homepage": "https://nucleos.rocks",
   "author": "Christian Gripp <mail@core23.de>",
   "main": "assets/npm.js",
   "files": [

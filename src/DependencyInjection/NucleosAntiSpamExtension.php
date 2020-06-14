@@ -3,24 +3,26 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\DependencyInjection;
+namespace Nucleos\AntiSpamBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-final class Core23AntiSpamExtension extends Extension
+final class NucleosAntiSpamExtension extends Extension
 {
     public function getAlias()
     {
-        return 'core23_antispam';
+        return 'nucleos_antispam';
     }
 
     /**
@@ -44,9 +46,9 @@ final class Core23AntiSpamExtension extends Extension
      */
     private function configureTwig($config, ContainerBuilder $container): void
     {
-        $container->setParameter('core23_antispam.twig.mail_css_class', $config['twig']['mail']['css_class']);
-        $container->setParameter('core23_antispam.twig.mail_at_text', $config['twig']['mail']['at_text']);
-        $container->setParameter('core23_antispam.twig.mail_dot_text', $config['twig']['mail']['dot_text']);
+        $container->setParameter('nucleos_antispam.twig.mail_css_class', $config['twig']['mail']['css_class']);
+        $container->setParameter('nucleos_antispam.twig.mail_at_text', $config['twig']['mail']['at_text']);
+        $container->setParameter('nucleos_antispam.twig.mail_dot_text', $config['twig']['mail']['dot_text']);
     }
 
     /**
@@ -55,7 +57,7 @@ final class Core23AntiSpamExtension extends Extension
     private function configureTime(ContainerBuilder $container, array $config): void
     {
         $container
-            ->getDefinition('core23_antispam.form.extension.type.time')
+            ->getDefinition('nucleos_antispam.form.extension.type.time')
             ->replaceArgument(2, $config['time'])
         ;
     }
@@ -66,10 +68,10 @@ final class Core23AntiSpamExtension extends Extension
     private function configureHoneypot(ContainerBuilder $container, array $config): void
     {
         $container
-            ->getDefinition('core23_antispam.form.extension.type.honeypot')
+            ->getDefinition('nucleos_antispam.form.extension.type.honeypot')
             ->replaceArgument(1, $config['honeypot'])
         ;
 
-        $container->setAlias('core23_antispam.provider', $config['honeypot']['provider']);
+        $container->setAlias('nucleos_antispam.provider', $config['honeypot']['provider']);
     }
 }

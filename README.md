@@ -1,15 +1,15 @@
 AntiSpamBundle
 ==============
-[![Latest Stable Version](https://poser.pugx.org/core23/antispam-bundle/v/stable)](https://packagist.org/packages/core23/antispam-bundle)
-[![Latest Unstable Version](https://poser.pugx.org/core23/antispam-bundle/v/unstable)](https://packagist.org/packages/core23/antispam-bundle)
-[![License](https://poser.pugx.org/core23/antispam-bundle/license)](LICENSE.md)
+[![Latest Stable Version](https://poser.pugx.org/nucleos/antispam-bundle/v/stable)](https://packagist.org/packages/nucleos/antispam-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/nucleos/antispam-bundle/v/unstable)](https://packagist.org/packages/nucleos/antispam-bundle)
+[![License](https://poser.pugx.org/nucleos/antispam-bundle/license)](LICENSE.md)
 
-[![Total Downloads](https://poser.pugx.org/core23/antispam-bundle/downloads)](https://packagist.org/packages/core23/antispam-bundle)
-[![Monthly Downloads](https://poser.pugx.org/core23/antispam-bundle/d/monthly)](https://packagist.org/packages/core23/antispam-bundle)
-[![Daily Downloads](https://poser.pugx.org/core23/antispam-bundle/d/daily)](https://packagist.org/packages/core23/antispam-bundle)
+[![Total Downloads](https://poser.pugx.org/nucleos/antispam-bundle/downloads)](https://packagist.org/packages/nucleos/antispam-bundle)
+[![Monthly Downloads](https://poser.pugx.org/nucleos/antispam-bundle/d/monthly)](https://packagist.org/packages/nucleos/antispam-bundle)
+[![Daily Downloads](https://poser.pugx.org/nucleos/antispam-bundle/d/daily)](https://packagist.org/packages/nucleos/antispam-bundle)
 
-[![Continuous Integration](https://github.com/core23/AntiSpamBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/AntiSpamBundle/actions)
-[![Code Coverage](https://codecov.io/gh/core23/AntiSpamBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/AntiSpamBundle)
+[![Continuous Integration](https://github.com/nucleos/NucleosAntiSpamBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosAntiSpamBundle/actions)
+[![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
 
 This bundle provides some basic features to reduce spam in symfony.
 
@@ -18,7 +18,7 @@ This bundle provides some basic features to reduce spam in symfony.
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
 
 ```
-composer require core23/antispam-bundle
+composer require nucleos/antispam-bundle
 ```
 
 ### Enable the Bundle
@@ -30,7 +30,7 @@ Then, enable the bundle by adding it to the list of registered bundles in `confi
 
 return [
     // ...
-    Core23\AntiSpamBundle\Core23AntiSpamBundle::class => ['all' => true],
+    Nucleos\AntiSpamBundle\NucleosAntiSpamBundle::class => ['all' => true],
 ];
 ```
 
@@ -51,7 +51,7 @@ $this->createForm(CustomFormType:class, null, array(
     'antispam_honeypot'       => true,
     'antispam_honeypot_class' => 'hide-me',
     'antispam_honeypot_field' => 'email-repeat',
-));
+))
 ```
 
 ### Twig text protection
@@ -82,9 +82,9 @@ to include the JavaScript library in your page. These file is located in the `as
 Add protection to all forms using the configuration:
 
 ```yaml
-# config/packages/core23_antispam.yaml
+# config/packages/nucleos_antispam.yaml
 
-core23_antispam:
+nucleos_antispam:
     # Time protection
     time:
         global: true
@@ -96,12 +96,12 @@ core23_antispam:
 
 ### Configure the Bundle
 
-Create a configuration file called `core23_antispam.yaml`:
+Create a configuration file called `nucleos_antispam.yaml`:
 
 ```yaml
-# config/packages/core23_antispam.yaml
+# config/packages/nucleos_antispam.yaml
 
-core23_antispam:
+nucleos_antispam:
     # Twig mail filter
     twig:
         mail:
@@ -120,7 +120,7 @@ core23_antispam:
         field: 'email_address'
         class: 'hidden'
         global: false
-        provider: 'core23_antispam.provider.session'
+        provider: 'nucleos_antispam.provider.session'
 ```
 
 ### Assets
