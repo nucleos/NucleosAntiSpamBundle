@@ -9,7 +9,7 @@ AntiSpamBundle
 [![Daily Downloads](https://poser.pugx.org/nucleos/antispam-bundle/d/daily)](https://packagist.org/packages/nucleos/antispam-bundle)
 
 [![Continuous Integration](https://github.com/nucleos/NucleosAntiSpamBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosAntiSpamBundle/actions)
-[![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
+[![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
 
 This bundle provides some basic features to reduce spam in symfony.
 
