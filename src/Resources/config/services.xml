@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="core23_antispam.form.extension.type.honeypot" class="Core23\AntiSpamBundle\Form\Extension\HoneypotFormExtension">
+    <service id="nucleos_antispam.form.extension.type.honeypot" class="Nucleos\AntiSpamBundle\Form\Extension\HoneypotFormExtension">
       <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="translator"/>
       <argument type="collection"/>
     </service>
-    <service id="core23_antispam.provider.session" class="Core23\AntiSpamBundle\Provider\SessionTimeProvider">
+    <service id="nucleos_antispam.provider.session" class="Nucleos\AntiSpamBundle\Provider\SessionTimeProvider">
       <argument type="service" id="session"/>
     </service>
-    <service id="core23_antispam.form.extension.type.time" class="Core23\AntiSpamBundle\Form\Extension\TimeFormExtension">
+    <service id="nucleos_antispam.form.extension.type.time" class="Nucleos\AntiSpamBundle\Form\Extension\TimeFormExtension">
       <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
-      <argument type="service" id="core23_antispam.provider"/>
+      <argument type="service" id="nucleos_antispam.provider"/>
       <argument type="service" id="translator"/>
       <argument type="collection"/>
     </service>
-    <service id="core23_antispam.twig.string_extension" class="Core23\AntiSpamBundle\Twig\Extension\StringTwigExtension">
+    <service id="nucleos_antispam.twig.string_extension" class="Nucleos\AntiSpamBundle\Twig\Extension\StringTwigExtension">
       <tag name="twig.extension"/>
-      <argument>%core23_antispam.twig.mail_css_class%</argument>
-      <argument>%core23_antispam.twig.mail_at_text%</argument>
-      <argument>%core23_antispam.twig.mail_dot_text%</argument>
+      <argument>%nucleos_antispam.twig.mail_css_class%</argument>
+      <argument>%nucleos_antispam.twig.mail_at_text%</argument>
+      <argument>%nucleos_antispam.twig.mail_dot_text%</argument>
     </service>
   </services>
 </container>

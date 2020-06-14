@@ -3,16 +3,18 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\Tests\App;
+namespace Nucleos\AntiSpamBundle\Tests\App;
 
-use Core23\AntiSpamBundle\Core23AntiSpamBundle;
-use Core23\AntiSpamBundle\Tests\App\Controller\TwigTestController;
+use Nucleos\AntiSpamBundle\NucleosAntiSpamBundle;
+use Nucleos\AntiSpamBundle\Tests\App\Controller\TwigTestController;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\TwigBundle\TwigBundle;
@@ -34,7 +36,7 @@ final class AppKernel extends Kernel
     {
         yield new FrameworkBundle();
         yield new TwigBundle();
-        yield new Core23AntiSpamBundle();
+        yield new NucleosAntiSpamBundle();
     }
 
     public function getCacheDir(): string

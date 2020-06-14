@@ -3,13 +3,15 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\DependencyInjection;
+namespace Nucleos\AntiSpamBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -19,7 +21,7 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('core23_antispam');
+        $treeBuilder = new TreeBuilder('nucleos_antispam');
 
         $rootNode = $treeBuilder->getRootNode();
 
@@ -92,7 +94,7 @@ final class Configuration implements ConfigurationInterface
                             ->info('CSS class to hide the honeypot. If not set a "style:hidden" attribute ist set.')
                         ->end()
                         ->booleanNode('global')->defaultFalse()->end()
-                        ->scalarNode('provider')->defaultValue('core23_antispam.provider.session')->end()
+                        ->scalarNode('provider')->defaultValue('nucleos_antispam.provider.session')->end()
                     ->end()
                 ->end()
             ->end()

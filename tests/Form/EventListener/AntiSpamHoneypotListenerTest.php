@@ -3,15 +3,17 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\Tests\Form\EventListener;
+namespace Nucleos\AntiSpamBundle\Tests\Form\EventListener;
 
-use Core23\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
+use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -81,7 +83,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
 
     public function testPreSubmitWithFilledHoneypot(): void
     {
-        $this->translator->trans('honeypot_error', [], 'Core23AntiSpamBundle')
+        $this->translator->trans('honeypot_error', [], 'NucleosAntiSpamBundle')
             ->willReturn('There is an error')
         ;
 

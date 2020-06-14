@@ -16,6 +16,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    Core23\AntiSpamBundle\Tests\App\Controller\TwigTestController:
+    Nucleos\AntiSpamBundle\Tests\App\Controller\TwigTestController:
         tags:
             - controller.service_arguments

@@ -3,13 +3,15 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\Form\EventListener;
+namespace Nucleos\AntiSpamBundle\Form\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormError;
@@ -27,7 +29,7 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
     /**
      * Translation domain.
      */
-    private const TRANSLATION_DOMAIN = 'Core23AntiSpamBundle';
+    private const TRANSLATION_DOMAIN = 'NucleosAntiSpamBundle';
 
     /**
      * @var TranslatorInterface

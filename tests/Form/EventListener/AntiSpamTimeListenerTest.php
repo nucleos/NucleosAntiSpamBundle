@@ -3,16 +3,18 @@
 declare(strict_types=1);
 
 /*
+ * This file is part of the NucleosAntiSpamBundle package.
+ *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Core23\AntiSpamBundle\Tests\Form\EventListener;
+namespace Nucleos\AntiSpamBundle\Tests\Form\EventListener;
 
-use Core23\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
-use Core23\AntiSpamBundle\Provider\TimeProviderInterface;
+use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
+use Nucleos\AntiSpamBundle\Provider\TimeProviderInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -79,7 +81,7 @@ final class AntiSpamTimeListenerTest extends TestCase
 
     public function testPreSubmitInvalidForm(): void
     {
-        $this->translator->trans('time_error', [], 'Core23AntiSpamBundle')
+        $this->translator->trans('time_error', [], 'NucleosAntiSpamBundle')
             ->willReturn('There is an error')
         ;
 

@@ -1,5 +1,5 @@
 {
-    "name": "core23/antispam-bundle",
+    "name": "nucleos/antispam-bundle",
     "type": "symfony-bundle",
     "description": "This bundle provides some basic features to reduce spam in symfony forms.",
     "keywords": [
@@ -11,7 +11,7 @@
         "twig",
         "protection"
     ],
-    "homepage": "https://core23.de",
+    "homepage": "https://nucleos.rocks",
     "license": "MIT",
     "authors": [
         {
@@ -51,12 +51,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Core23\\AntiSpamBundle\\": "src/"
+            "Nucleos\\AntiSpamBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Core23\\AntiSpamBundle\\Tests\\": "tests/"
+            "Nucleos\\AntiSpamBundle\\Tests\\": "tests/"
         }
     },
     "scripts": {
