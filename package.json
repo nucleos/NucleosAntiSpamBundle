@@ -1,10 +1,41 @@
 {
-  "name": "@nucleos/antispam-bundle",
-  "version": "1.0.0",
-  "homepage": "https://nucleos.rocks",
-  "author": "Christian Gripp <mail@core23.de>",
-  "main": "assets/npm.js",
-  "files": [
-    "assets/"
-  ]
+    "name": "@nucleos/antispam-bundle",
+    "version": "1.0.0",
+    "homepage": "https://nucleos.rocks",
+    "author": "Christian Gripp <mail@core23.de>",
+    "devDependencies": {
+        "@babel/core": "^7.7.4",
+        "@babel/preset-env": "^7.7.4",
+        "@size-limit/preset-small-lib": "^4.1.1",
+        "@size-limit/webpack": "^4.1.1",
+        "@symfony/webpack-encore": "^0.27.0",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.1.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.1.0",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-loader": "^2.1.2",
+        "eslint-watch": "^6.0.1",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^8.0.2",
+        "size-limit": "^4.1.1"
+    },
+    "main": "assets/widget.js",
+    "files": [
+        "src/Resources/public/"
+    ],
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "size": "size-limit",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "size-limit": [
+        {
+            "path": "src/Resources/public/widget.js",
+            "gzip": false,
+            "limit": "2 KB"
+        }
+    ]
 }
