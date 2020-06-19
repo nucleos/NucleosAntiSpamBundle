@@ -1,5 +1,5 @@
-AntiSpamBundle
-==============
+NucleosAntiSpamBundle
+=====================
 [![Latest Stable Version](https://poser.pugx.org/nucleos/antispam-bundle/v/stable)](https://packagist.org/packages/nucleos/antispam-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/nucleos/antispam-bundle/v/unstable)](https://packagist.org/packages/nucleos/antispam-bundle)
 [![License](https://poser.pugx.org/nucleos/antispam-bundle/license)](LICENSE.md)
