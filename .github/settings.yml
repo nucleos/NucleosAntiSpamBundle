@@ -4,7 +4,7 @@ _extends: .github
 
 repository:
   name: NucleosAntiSpamBundle
-  description: This bundle provides some basic features to reduce spam in symfony forms.
+  description: 🛡️ This bundle provides some basic features to reduce spam in symfony forms.
   homepage: https://core23.de
   topics: symfony, symfony-bundle, bundle, php, antispam, spam, form, protection
 
