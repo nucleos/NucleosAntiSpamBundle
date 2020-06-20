@@ -1,3 +1,11 @@
+# 2.1.0
+
+## Changes
+
+## 🚀 Features
+
+- Add combined assets @core23
+
 # 2.0.0
 
 ## Changed
