@@ -27,7 +27,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class AntiSpamHoneypotListenerTest extends TestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<TranslatorInterface>
      */
     private $translator;
 

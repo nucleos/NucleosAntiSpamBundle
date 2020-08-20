@@ -32,7 +32,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class HoneypotFormExtensionTest extends TestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<TranslatorInterface>
      */
     private $translator;
 

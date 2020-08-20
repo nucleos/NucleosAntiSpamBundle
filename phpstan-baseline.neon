@@ -81,26 +81,6 @@ parameters:
 			path: src/Provider/TimeProviderInterface.php
 
 		-
-			message: "#^Parameter \\#1 \\$translator of class Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamHoneypotListener constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
-			count: 4
-			path: tests/Form/EventListener/AntiSpamHoneypotListenerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$timeProvider of class Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener constructor expects Nucleos\\\\AntiSpamBundle\\\\Provider\\\\TimeProviderInterface, object given\\.$#"
-			count: 4
-			path: tests/Form/EventListener/AntiSpamTimeListenerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$translator of class Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
-			count: 4
-			path: tests/Form/EventListener/AntiSpamTimeListenerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$translator of class Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\HoneypotFormExtension constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
-			count: 9
-			path: tests/Form/Extension/HoneypotFormExtensionTest.php
-
-		-
 			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$children\\.$#"
 			count: 2
 			path: tests/Form/Extension/HoneypotFormExtensionTest.php
@@ -109,16 +89,6 @@ parameters:
 			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$parent\\.$#"
 			count: 1
 			path: tests/Form/Extension/HoneypotFormExtensionTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$timeProvider of class Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension constructor expects Nucleos\\\\AntiSpamBundle\\\\Provider\\\\TimeProviderInterface, object given\\.$#"
-			count: 6
-			path: tests/Form/Extension/TimeFormExtensionTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$translator of class Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
-			count: 6
-			path: tests/Form/Extension/TimeFormExtensionTest.php
 
 		-
 			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$parent\\.$#"
