@@ -29,12 +29,12 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class TimeFormExtensionTest extends TestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<TimeProviderInterface>
      */
     private $timeProvider;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<TranslatorInterface>
      */
     private $translator;
 
