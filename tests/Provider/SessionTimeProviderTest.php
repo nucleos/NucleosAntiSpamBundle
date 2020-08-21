@@ -17,11 +17,14 @@ use DateTime;
 use Nucleos\AntiSpamBundle\Provider\SessionTimeProvider;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 final class SessionTimeProviderTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testCreateFromString(): void
     {
         $session = $this->prophesize(Session::class);
