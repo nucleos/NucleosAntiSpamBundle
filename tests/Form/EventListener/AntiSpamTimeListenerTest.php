@@ -17,6 +17,7 @@ use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
 use Nucleos\AntiSpamBundle\Provider\TimeProviderInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormError;
@@ -27,6 +28,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamTimeListenerTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<TimeProviderInterface>
      */

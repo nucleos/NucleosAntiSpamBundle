@@ -16,6 +16,7 @@ namespace Nucleos\AntiSpamBundle\Tests\Form\EventListener;
 use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormError;
@@ -26,6 +27,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamHoneypotListenerTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<TranslatorInterface>
      */

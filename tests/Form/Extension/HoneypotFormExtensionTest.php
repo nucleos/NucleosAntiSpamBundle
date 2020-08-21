@@ -17,6 +17,7 @@ use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
 use Nucleos\AntiSpamBundle\Form\Extension\HoneypotFormExtension;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use RuntimeException;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -31,6 +32,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class HoneypotFormExtensionTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<TranslatorInterface>
      */
