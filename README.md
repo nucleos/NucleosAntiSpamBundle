@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ```
 
 It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
-to include the JavaScript library in your page. These file is located in the `assets` folder.
+to include the JavaScript library in your page. This file is located in the `assets` folder.
 
 ### Global protection
 
@@ -107,8 +107,8 @@ nucleos_antispam:
     twig:
         mail:
             css_class: 'custom_class'
-            at_text:   [ '[DOT]', '(DOT)', '[.]' ]
-            dot_text:  [ '[AT]', '(AT)', '[ÄT]' ]
+            at_text:   [ '[AT]', '(AT)', '[ÄT]' ]
+            dot_text:  [ '[DOT]', '(DOT)', '[.]' ]
 
     # Time protection
     time:
@@ -127,7 +127,7 @@ nucleos_antispam:
 ### Assets
 
 It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
-to include the `AntiSpam.js` file in your page. These file is located in the `assets` folder.
+to include the `AntiSpam.js` file in your page. This file is located in the `assets` folder.
 
 ## License
 
