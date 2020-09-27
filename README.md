@@ -12,7 +12,7 @@ NucleosAntiSpamBundle
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle)
 
-This bundle provides some basic features to reduce spam in symfony.
+This bundle provides some basic features to reduce spam in Symfony. It is the successor of `core23/antispam-bundle`, but not related to `isometriks/spam-bundle`.
 
 ## Installation
 
@@ -55,24 +55,24 @@ $this->createForm(CustomFormType:class, null, array(
 ))
 ```
 
-### Twig text protection
+### Twig email address obfuscation
+
+The Twig filter `antispam` replaces `@` by e.g. `[AT]`.
 
 ```twig
 {# Replace plain text #}
-{{ text|antispam }}
+{{ email|antispam }}
 
 {# Replace rich text mails #}
 {{ htmlText|antispam(true) }}
-
 ```
 
-If you want a JavaScript decoding for the encoded mails, you should use the `AntiSpam.js` library:
+If you want a JavaScript decoding for the encoded email addresses, you should use the `AntiSpam.js` library:
 
 ```javascript
 document.addEventListener('DOMContentLoaded', () => {
   new AntiSpam('.custom_class');
 });
-
 ```
 
 It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
@@ -123,11 +123,6 @@ nucleos_antispam:
         global: false
         provider: 'nucleos_antispam.provider.session'
 ```
-
-### Assets
-
-It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
-to include the `AntiSpam.js` file in your page. This file is located in the `assets` folder.
 
 ## License
 
