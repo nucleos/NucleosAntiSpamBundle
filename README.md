@@ -12,7 +12,7 @@ NucleosAntiSpamBundle
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle)
 
-This bundle provides some basic features to reduce spam in Symfony. It is the successor of `core23/antispam-bundle`, but not related to `isometriks/spam-bundle`.
+This bundle provides some basic features to reduce spam in Symfony 4.2+ and PHP 7.3+. It is the successor of `core23/antispam-bundle`, but not related to `isometriks/spam-bundle`.
 
 ## Installation
 
