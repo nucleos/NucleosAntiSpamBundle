@@ -14,6 +14,14 @@ NucleosAntiSpamBundle
 
 This bundle provides some basic features to reduce spam in Symfony 4.2+ and PHP 7.3+. It is the successor of `core23/antispam-bundle`, but not related to `isometriks/spam-bundle`.
 
+## Features
+
+* **Honeypot protection for forms:** An additional "hidden" (i.e. made invisible with CSS) field will be added to your form. Whoever fills out this field, is considered to be a spam bot.
+
+* **Time protection for forms:** The time between *displaying* the form and *submitting* the form is measured. Anybody who submits the form quicker than a certain number of seconds, is considered to be a spam bot. The timestamp is stored in the session.
+
+* **Email address obfuscation filter for Twig:** To prevent spam harvest bots from detecting your email address, they are obfuscated by e.g. replacing `@` with `[AT]`. The filter will find email addresses automatically, so you can apply it to your entire text.
+
 ## Installation
 
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
@@ -61,7 +69,7 @@ The Twig filter `antispam` replaces `@` by e.g. `[AT]`.
 
 ```twig
 {# Replace plain text #}
-{{ email|antispam }}
+{{ text|antispam }}
 
 {# Replace rich text mails #}
 {{ htmlText|antispam(true) }}
