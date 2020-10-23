@@ -36,16 +36,6 @@ parameters:
 			path: src/Form/Extension/HoneypotFormExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\HoneypotFormExtension\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Extension/HoneypotFormExtension.php
-
-		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\HoneypotFormExtension\\:\\:finishView\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Extension/HoneypotFormExtension.php
-
-		-
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\HoneypotFormExtension\\:\\:createViewOptions\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Extension/HoneypotFormExtension.php
@@ -57,16 +47,6 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension\\:\\:__construct\\(\\) has parameter \\$defaults with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Extension/TimeFormExtension.php
-
-		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Extension/TimeFormExtension.php
-
-		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension\\:\\:finishView\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Extension/TimeFormExtension.php
 
