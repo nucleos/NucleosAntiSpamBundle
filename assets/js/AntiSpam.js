@@ -15,7 +15,7 @@ export default class AntiSpam {
    * @returns {string}
    */
   static clean(string) {
-    return string.replace(/[\[({][\w.]+[})\]]/g, '.').replace(/\s+/g, '');
+    return string.replace(/[[({][\w.]+[})\]]/g, '.').replace(/\s+/g, '');
   }
 
   /**

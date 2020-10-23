@@ -45,7 +45,7 @@ final class HoneypotFormExtension extends AbstractTypeExtension
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        if (!$options['antispam_honeypot']) {
+        if (true !== $options['antispam_honeypot']) {
             return;
         }
 
@@ -57,7 +57,7 @@ final class HoneypotFormExtension extends AbstractTypeExtension
 
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
-        if ($view->parent || !$options['antispam_honeypot'] || !$options['compound']) {
+        if (null !== $view->parent || true !== $options['antispam_honeypot'] || true !== $options['compound']) {
             return;
         }
 
