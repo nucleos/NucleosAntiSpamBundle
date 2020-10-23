@@ -49,7 +49,7 @@ final class TimeFormExtension extends AbstractTypeExtension
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        if (!$options['antispam_time']) {
+        if (true !== $options['antispam_time']) {
             return;
         }
 
@@ -65,7 +65,7 @@ final class TimeFormExtension extends AbstractTypeExtension
 
     public function finishView(FormView $view, FormInterface $form, array $options): void
     {
-        if ($view->parent || !$options['antispam_time'] || !$options['compound']) {
+        if (null !== $view->parent || true !== $options['antispam_time'] || true !== $options['compound']) {
             return;
         }
 
