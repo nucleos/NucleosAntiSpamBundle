@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\AntiSpamBundle\Provider;
 
 use DateTime;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 final class SessionTimeProvider implements TimeProviderInterface
@@ -43,24 +44,14 @@ final class SessionTimeProvider implements TimeProviderInterface
             return false;
         }
 
-        $currentTime = new DateTime();
+        $currentTime = new DateTimeImmutable();
 
-        if (\array_key_exists('min', $options) && null !== $options['min']) {
-            $minTime = clone $startTime;
-            $minTime->modify(sprintf('+%d seconds', $options['min']));
-
-            if ($minTime > $currentTime) {
-                return false;
-            }
+        if ($this->violatesMin($startTime, $currentTime, $options)) {
+            return false;
         }
 
-        if (\array_key_exists('max', $options) && null !== $options['max']) {
-            $maxTime = clone $startTime;
-            $maxTime->modify(sprintf('+%d seconds', $options['max']));
-
-            if ($maxTime < $currentTime) {
-                return false;
-            }
+        if ($this->violatesMax($startTime, $currentTime, $options)) {
+            return false;
         }
 
         return true;
@@ -101,5 +92,39 @@ final class SessionTimeProvider implements TimeProviderInterface
     private function getSessionKey(string $name): string
     {
         return 'antispam_'.$name;
+    }
+
+    /**
+     * @param array<string, mixed> $options
+     */
+    private function violatesMin(DateTime $value, DateTimeImmutable $currentTime, array $options): bool
+    {
+        if (\array_key_exists('min', $options) && null !== $options['min']) {
+            $minTime = clone $value;
+            $minTime->modify(sprintf('+%d seconds', $options['min']));
+
+            if ($minTime > $currentTime) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param array<string, mixed> $options
+     */
+    private function violatesMax(DateTime $value, DateTimeImmutable $currentTime, array $options): bool
+    {
+        if (\array_key_exists('max', $options) && null !== $options['max']) {
+            $maxTime = clone $value;
+            $maxTime->modify(sprintf('+%d seconds', $options['max']));
+
+            if ($maxTime < $currentTime) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
