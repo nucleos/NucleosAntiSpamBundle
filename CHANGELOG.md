@@ -4,7 +4,7 @@
 
 ## 🚀 Features
 
-- Add combined assets @core23
+- Add combined assets [@core23]
 
 # 2.0.0
 
@@ -46,9 +46,15 @@
 
 ## Changes
 
-- Add missing strict file header @core23 (#34)
+- Add missing strict file header [@core23] ([#34])
 
 ## 📦 Dependencies
 
-- Add support for symfony 5 @core23 (#25)
-- Drop support for symfony < 4.2 @core23 (#31)
+- Add support for symfony 5 [@core23] ([#25])
+- Drop support for symfony < 4.2 [@core23] ([#31])
+
+[#34]: https://github.com/nucleos/NucleosAntiSpamBundle/pull/34
+[#31]: https://github.com/nucleos/NucleosAntiSpamBundle/pull/31
+[#25]: https://github.com/nucleos/NucleosAntiSpamBundle/pull/25
+[@nucleos]: https://github.com/nucleos
+[@core23]: https://github.com/core23
