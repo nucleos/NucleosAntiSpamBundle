@@ -1,14 +1,42 @@
-# 2.1.0
+# Changelog
 
-## Changes
+All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 🚀 Features
+## 2.2.0 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+-----
+
+## 2.1.0
+
+### Changes
+
+### 🚀 Features
 
 - Add combined assets [@core23]
 
-# 2.0.0
+## 2.0.0
 
-## Changed
+### Changed
 
 * Renamed namespace `Core23\AntiSpamBundle` to `Nucleos\AntiSpamBundle` after move to [@nucleos]
 
@@ -42,13 +70,13 @@
 
   to delete backup files created in the previous step.
 
-# 1.3.0
+## 1.3.0
 
-## Changes
+### Changes
 
 - Add missing strict file header [@core23] ([#34])
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - Add support for symfony 5 [@core23] ([#25])
 - Drop support for symfony < 4.2 [@core23] ([#31])
