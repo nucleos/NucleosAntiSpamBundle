@@ -2,29 +2,35 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.2.0 - TBD
-
-### Added
-
-- Nothing.
-
-### Changed
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
+## 2.2.0 - 2021-02-07
 
 -----
+
+
+-----
+
+### Release Notes for [2.2.0](https://github.com/nucleos/NucleosAntiSpamBundle/milestone/1)
+
+
+
+### 2.2.0
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **2**
+
+#### dependency
+
+ - [137: Add support for PHP 8](https://github.com/nucleos/NucleosAntiSpamBundle/pull/137) thanks to @core23
+ - [66: Drop support for PHP 7.2](https://github.com/nucleos/NucleosAntiSpamBundle/pull/66) thanks to @core23
+
+#### Documentation
+
+ - [91: Rework README](https://github.com/nucleos/NucleosAntiSpamBundle/pull/91) thanks to @ThomasLandauer
+
+#### Enhancement
+
+ - [60: Move configuration to PHP](https://github.com/nucleos/NucleosAntiSpamBundle/pull/60) thanks to @core23
 
 ## 2.1.0
 
