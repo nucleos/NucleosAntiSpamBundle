@@ -8,7 +8,7 @@ NucleosAntiSpamBundle
 [![Monthly Downloads](https://poser.pugx.org/nucleos/antispam-bundle/d/monthly)](https://packagist.org/packages/nucleos/antispam-bundle)
 [![Daily Downloads](https://poser.pugx.org/nucleos/antispam-bundle/d/daily)](https://packagist.org/packages/nucleos/antispam-bundle)
 
-[![Continuous Integration](https://github.com/nucleos/NucleosAntiSpamBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosAntiSpamBundle/actions?query=workflow%3A"Continuous+Integration")
+[![Continuous Integration](https://github.com/nucleos/NucleosAntiSpamBundle/workflows/Continuous%20Integration/badge.svg?event=push)](https://github.com/nucleos/NucleosAntiSpamBundle/actions?query=workflow%3A"Continuous+Integration"+event%3Apush)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle)
 
