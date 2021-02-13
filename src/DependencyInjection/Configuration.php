@@ -25,8 +25,6 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->getRootNode();
 
-        \assert($rootNode instanceof ArrayNodeDefinition);
-
         $this->addTwigSection($rootNode);
         $this->addTimeSection($rootNode);
         $this->addHoneypotSection($rootNode);
