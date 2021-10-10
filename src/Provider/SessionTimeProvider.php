@@ -15,15 +15,29 @@ namespace Nucleos\AntiSpamBundle\Provider;
 
 use DateTime;
 use DateTimeImmutable;
-use Symfony\Component\HttpFoundation\Session\Session;
+use InvalidArgumentException;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 final class SessionTimeProvider implements TimeProviderInterface
 {
-    private Session $session;
+    private SessionInterface $session;
 
-    public function __construct(Session $session)
+    public function __construct(object $requestStackOrDeprecatedSession)
     {
-        $this->session = $session;
+        if ($requestStackOrDeprecatedSession instanceof SessionInterface) {
+            $this->session = $requestStackOrDeprecatedSession;
+
+            trigger_error(sprintf('Passing a session is deprecated. Use %s instead', RequestStack::class));
+
+            return;
+        }
+
+        if (!$requestStackOrDeprecatedSession instanceof RequestStack) {
+            throw new InvalidArgumentException(sprintf('Expected a %s, %s given', RequestStack::class, \get_class($requestStackOrDeprecatedSession)));
+        }
+
+        $this->session = $requestStackOrDeprecatedSession->getSession();
     }
 
     public function createFormProtection(string $name): void
