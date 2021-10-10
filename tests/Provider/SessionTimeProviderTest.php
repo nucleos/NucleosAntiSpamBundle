@@ -19,6 +19,7 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 final class SessionTimeProviderTest extends TestCase
@@ -31,16 +32,18 @@ final class SessionTimeProviderTest extends TestCase
         $session->set('antispam_foobar', Argument::type(DateTime::class))
             ->shouldBeCalled()
         ;
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
         $provider->createFormProtection('foobar');
     }
 
     public function testIsValid(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertTrue($provider->isValid('foobar', []));
     }
@@ -48,8 +51,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsValidWithMinTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertTrue($provider->isValid('foobar', [
             'min' => 10,
@@ -59,8 +63,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsValidWithMaxTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertTrue($provider->isValid('foobar', [
             'max' => 60,
@@ -73,8 +78,9 @@ final class SessionTimeProviderTest extends TestCase
         $session->has('antispam_foobar')
             ->willReturn(false)
         ;
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertFalse($provider->isValid('foobar', []));
     }
@@ -82,8 +88,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsInvalidBecauseOfMinTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
         static::assertFalse($provider->isValid('foobar', [
             'min' => 60,
         ]));
@@ -92,7 +99,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsInvalidBecauseOfMaxTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertFalse($provider->isValid('foobar', [
             'max' => 10,
@@ -105,13 +114,14 @@ final class SessionTimeProviderTest extends TestCase
         $session->remove('antispam_foobar')
             ->shouldBeCalled()
         ;
-
-        $provider = new SessionTimeProvider($session->reveal());
+        /** @var RequestStack $stack */
+        $stack    = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
         $provider->removeFormProtection('foobar');
     }
 
     /**
-     * @return ObjectProphecy|Session
+     * @return ObjectProphecy<Session>
      */
     private function prepareValidSessionKey(): ObjectProphecy
     {
@@ -124,5 +134,18 @@ final class SessionTimeProviderTest extends TestCase
         ;
 
         return $session;
+    }
+
+    /**
+     * @param ObjectProphecy<Session> $session
+     *
+     * @return ObjectProphecy<RequestStack>
+     */
+    private function createStack(ObjectProphecy $session): ObjectProphecy
+    {
+        $stack = $this->prophesize(RequestStack::class);
+        $stack->getSession()->willReturn($session->reveal());
+
+        return $stack;
     }
 }

@@ -33,8 +33,7 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_antispam.provider.session', SessionTimeProvider::class)
             ->args([
-                new Reference('session'),
-                [],
+                new Reference('request_stack'),
             ])
 
         ->set('nucleos_antispam.form.extension.type.time', TimeFormExtension::class)
