@@ -15,25 +15,25 @@ namespace Nucleos\AntiSpamBundle\Provider;
 
 use DateTime;
 use DateTimeImmutable;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 final class SessionTimeProvider implements TimeProviderInterface
 {
     /**
-     * @var Session
+     * @var RequestStack
      */
-    private $session;
+    private $requestStack;
 
-    public function __construct(Session $session)
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     public function createFormProtection(string $name): void
     {
         $startTime = new DateTime();
         $key       = $this->getSessionKey($name);
-        $this->session->set($key, $startTime);
+        $this->requestStack->getSession()->set($key, $startTime);
     }
 
     public function isValid(string $name, array $options): bool
@@ -60,7 +60,7 @@ final class SessionTimeProvider implements TimeProviderInterface
     public function removeFormProtection(string $name): void
     {
         $key = $this->getSessionKey($name);
-        $this->session->remove($key);
+        $this->requestStack->getSession()->remove($key);
     }
 
     /**
@@ -70,7 +70,7 @@ final class SessionTimeProvider implements TimeProviderInterface
     {
         $key = $this->getSessionKey($name);
 
-        return $this->session->has($key);
+        return $this->requestStack->getSession()->has($key);
     }
 
     /**
@@ -83,7 +83,7 @@ final class SessionTimeProvider implements TimeProviderInterface
         $key = $this->getSessionKey($name);
 
         if ($this->hasFormProtection($name)) {
-            return $this->session->get($key);
+            return $this->requestStack->getSession()->get($key);
         }
 
         return null;
