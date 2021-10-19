@@ -32,16 +32,18 @@ final class SessionTimeProviderTest extends TestCase
         $session->set('antispam_foobar', Argument::type(DateTime::class))
             ->shouldBeCalled()
         ;
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
         $provider->createFormProtection('foobar');
     }
 
     public function testIsValid(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertTrue($provider->isValid('foobar', []));
     }
@@ -49,8 +51,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsValidWithMinTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertTrue($provider->isValid('foobar', [
             'min' => 10,
@@ -60,8 +63,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsValidWithMaxTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertTrue($provider->isValid('foobar', [
             'max' => 60,
@@ -74,8 +78,9 @@ final class SessionTimeProviderTest extends TestCase
         $session->has('antispam_foobar')
             ->willReturn(false)
         ;
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertFalse($provider->isValid('foobar', []));
     }
@@ -83,8 +88,9 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsInvalidBecauseOfMinTime(): void
     {
         $session  = $this->prepareValidSessionKey();
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
         static::assertFalse($provider->isValid('foobar', [
             'min' => 60,
         ]));
@@ -92,8 +98,10 @@ final class SessionTimeProviderTest extends TestCase
 
     public function testIsInvalidBecauseOfMaxTime(): void
     {
-        $session  = $this->prepareValidSessionKey();
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        $session  = $this->prepareValidSessionKey()
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
 
         static::assertFalse($provider->isValid('foobar', [
             'max' => 10,
@@ -106,8 +114,9 @@ final class SessionTimeProviderTest extends TestCase
         $session->remove('antispam_foobar')
             ->shouldBeCalled()
         ;
-
-        $provider = new SessionTimeProvider($this->createStack($session)->reveal());
+        /** @var RequestStack $stack */
+        $stack = $this->createStack($session)->reveal();
+        $provider = new SessionTimeProvider($stack);
         $provider->removeFormProtection('foobar');
     }
 
@@ -131,6 +140,7 @@ final class SessionTimeProviderTest extends TestCase
     {
         $stack = $this->prophesize(RequestStack::class);
         $stack->getSession()->willReturn($session->reveal());
+        
         return $stack;
     }
 }
