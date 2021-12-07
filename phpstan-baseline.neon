@@ -6,12 +6,12 @@ parameters:
 			path: src/DependencyInjection/NucleosAntiSpamExtension.php
 
 		-
-			message: "#^Property Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/EventListener/AntiSpamTimeListener.php
 
 		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/EventListener/AntiSpamTimeListener.php
 
@@ -44,6 +44,26 @@ parameters:
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Provider\\\\TimeProviderInterface\\:\\:isValid\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Provider/TimeProviderInterface.php
+
+		-
+			message: "#^Variable \\$name on left side of \\?\\? always exists and is not nullable\\.$#"
+			count: 1
+			path: src/Twig/Extension/StringTwigExtension.php
+
+		-
+			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$loader with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureRoutes\\(\\) has parameter \\$routes with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
 
 		-
 			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$children\\.$#"
