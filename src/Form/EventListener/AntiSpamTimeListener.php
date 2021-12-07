@@ -54,7 +54,7 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
         $this->options           = $options;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             FormEvents::PRE_SUBMIT => 'preSubmit',
