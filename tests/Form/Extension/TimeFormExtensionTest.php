@@ -16,10 +16,8 @@ namespace Nucleos\AntiSpamBundle\Tests\Form\Extension;
 use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
 use Nucleos\AntiSpamBundle\Form\Extension\TimeFormExtension;
 use Nucleos\AntiSpamBundle\Provider\TimeProviderInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -29,60 +27,52 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class TimeFormExtensionTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<TimeProviderInterface>
+     * @var MockObject&TimeProviderInterface
      */
     private $timeProvider;
 
     /**
-     * @var ObjectProphecy<TranslatorInterface>
+     * @var MockObject&TranslatorInterface
      */
     private $translator;
 
     protected function setUp(): void
     {
-        $this->timeProvider = $this->prophesize(TimeProviderInterface::class);
-        $this->translator   = $this->prophesize(TranslatorInterface::class);
+        $this->timeProvider = $this->createMock(TimeProviderInterface::class);
+        $this->translator   = $this->createMock(TranslatorInterface::class);
     }
 
     public function testBuildForm(): void
     {
-        $builder = $this->prophesize(FormBuilderInterface::class);
-        $builder->addEventSubscriber(Argument::type(AntiSpamTimeListener::class))
-            ->shouldBeCalled()
-        ;
+        $builder = $this->createMock(FormBuilderInterface::class);
+        $builder->expects(static::once())->method('addEventSubscriber')->with(static::isInstanceOf(AntiSpamTimeListener::class));
 
         $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $extension->buildForm($builder->reveal(), [
+        $extension->buildForm($builder, [
             'antispam_time'     => true,
             'antispam_time_min' => 10,
             'antispam_time_max' => 30,
         ]);
 
-        $builder->addEventSubscriber(Argument::type(AntiSpamTimeListener::class))
-            ->shouldBeCalled()
-        ;
+        $builder->method('addEventSubscriber')->with(static::isInstanceOf(AntiSpamTimeListener::class));
     }
 
     public function testBuildFormWithDisabledAntispam(): void
     {
-        $builder = $this->prophesize(FormBuilderInterface::class);
-        $builder->addEventSubscriber(Argument::type(AntiSpamTimeListener::class))
-            ->shouldNotBeCalled()
-        ;
+        $builder = $this->createMock(FormBuilderInterface::class);
+        $builder->expects(static::never())->method('addEventSubscriber');
 
         $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $extension->buildForm($builder->reveal(), [
+        $extension->buildForm($builder, [
             'antispam_time'     => false,
             'antispam_time_min' => 10,
             'antispam_time_max' => 30,
@@ -91,22 +81,20 @@ final class TimeFormExtensionTest extends TestCase
 
     public function testFinishView(): void
     {
-        $view = $this->prophesize(FormView::class);
-        $form = $this->prophesize(FormInterface::class);
-        $form->getName()
+        $view = $this->createMock(FormView::class);
+        $form = $this->createMock(FormInterface::class);
+        $form->method('getName')
             ->willReturn('my_form')
         ;
 
-        $this->timeProvider->createFormProtection('my_form')
-            ->shouldBeCalled()
-        ;
+        $this->timeProvider->expects(static::once())->method('createFormProtection')->with('my_form');
 
         $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $extension->finishView($view->reveal(), $form->reveal(), [
+        $extension->finishView($view, $form, [
             'compound'          => true,
             'antispam_time'     => true,
             'antispam_time_min' => 10,
@@ -116,53 +104,49 @@ final class TimeFormExtensionTest extends TestCase
 
     public function testFinishViewForChildForm(): void
     {
-        $view         = $this->prophesize(FormView::class);
-        $view->parent = $this->prophesize(FormView::class)->reveal();
-        $form         = $this->prophesize(FormInterface::class);
-        $form->getName()
+        $view         = $this->createMock(FormView::class);
+        $view->parent = $this->createMock(FormView::class);
+        $form         = $this->createMock(FormInterface::class);
+        $form->method('getName')
             ->willReturn('my_form')
         ;
 
         $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $extension->finishView($view->reveal(), $form->reveal(), [
+        $extension->finishView($view, $form, [
             'compound'          => true,
             'antispam_time'     => true,
             'antispam_time_min' => 10,
             'antispam_time_max' => 30,
         ]);
 
-        $this->timeProvider->createFormProtection('my_form')
-            ->shouldNotHaveBeenCalled()
-        ;
+        $this->timeProvider->expects(static::never())->method('createFormProtection');
     }
 
     public function testFinishViewWithDisbaledAntispam(): void
     {
-        $view = $this->prophesize(FormView::class);
-        $form = $this->prophesize(FormInterface::class);
-        $form->getName()
+        $view = $this->createMock(FormView::class);
+        $form = $this->createMock(FormInterface::class);
+        $form->method('getName')
             ->willReturn('my_form')
         ;
 
         $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $extension->finishView($view->reveal(), $form->reveal(), [
+        $extension->finishView($view, $form, [
             'compound'          => true,
             'antispam_time'     => false,
             'antispam_time_min' => 10,
             'antispam_time_max' => 30,
         ]);
 
-        $this->timeProvider->createFormProtection('my_form')
-            ->shouldNotHaveBeenCalled()
-        ;
+        $this->timeProvider->expects(static::never())->method('createFormProtection');
     }
 
     public function testConfigureOptions(): void
@@ -170,8 +154,8 @@ final class TimeFormExtensionTest extends TestCase
         $resolver = new OptionsResolver();
 
         $extension = new TimeFormExtension(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             [
                 'global' => true,
                 'min'    => 10,

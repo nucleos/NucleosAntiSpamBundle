@@ -15,10 +15,8 @@ namespace Nucleos\AntiSpamBundle\Tests\Form\EventListener;
 
 use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamTimeListener;
 use Nucleos\AntiSpamBundle\Provider\TimeProviderInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
@@ -28,22 +26,20 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamTimeListenerTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<TimeProviderInterface>
+     * @var MockObject&TimeProviderInterface
      */
     private $timeProvider;
 
     /**
-     * @var ObjectProphecy<TranslatorInterface>
+     * @var MockObject&TranslatorInterface
      */
     private $translator;
 
     protected function setUp(): void
     {
-        $this->timeProvider = $this->prophesize(TimeProviderInterface::class);
-        $this->translator   =  $this->prophesize(TranslatorInterface::class);
+        $this->timeProvider = $this->createMock(TimeProviderInterface::class);
+        $this->translator   =  $this->createMock(TranslatorInterface::class);
     }
 
     public function testGetSubscribedEvents(): void
@@ -55,136 +51,125 @@ final class AntiSpamTimeListenerTest extends TestCase
 
     public function testPreSubmit(): void
     {
-        $this->timeProvider->isValid('my-form', ['foo' => 'bar'])
+        $this->timeProvider->method('isValid')->with('my-form', ['foo' => 'bar'])
             ->willReturn(true)
         ;
-        $this->timeProvider->removeFormProtection('my-form')
-            ->shouldBeCalled()
+        $this->timeProvider->expects(static::once())->method('removeFormProtection')->with('my-form')
         ;
 
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(true)
         ;
 
         $form = $this->prepareForm($config, true);
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
 
         $listener = new AntiSpamTimeListener(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             ['foo' => 'bar']
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
     }
 
     public function testPreSubmitInvalidForm(): void
     {
-        $this->translator->trans('time_error', [], 'NucleosAntiSpamBundle')
+        $this->translator->method('trans')->with('time_error', [], 'NucleosAntiSpamBundle')
             ->willReturn('There is an error')
         ;
 
-        $this->timeProvider->isValid('my-form', ['foo' => 'bar'])
+        $this->timeProvider->method('isValid')->with('my-form', ['foo' => 'bar'])
             ->willReturn(false)
         ;
-        $this->timeProvider->removeFormProtection('my-form')
-            ->shouldBeCalled()
-        ;
+        $this->timeProvider->expects(static::once())->method('removeFormProtection')->with('my-form');
 
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(true)
         ;
 
         $form = $this->prepareForm($config, true);
-        $form->addError(Argument::type(FormError::class))
-            ->shouldBeCalled()
-        ;
+        $form->expects(static::once())->method('addError')->with(static::isInstanceOf(FormError::class));
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
 
         $listener = new AntiSpamTimeListener(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             ['foo' => 'bar']
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
     }
 
     public function testPreSubmitChildForm(): void
     {
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(false)
         ;
 
         $form = $this->prepareForm($config);
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
 
         $listener = new AntiSpamTimeListener(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
 
-        $this->timeProvider->removeFormProtection('my-form')
-            ->shouldNotHaveBeenCalled()
-        ;
+        $this->timeProvider->expects(static::never())->method('removeFormProtection');
     }
 
     public function testPreSubmitCompoundForm(): void
     {
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(true)
         ;
 
         $form = $this->prepareForm($config);
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
 
         $listener = new AntiSpamTimeListener(
-            $this->timeProvider->reveal(),
-            $this->translator->reveal(),
+            $this->timeProvider,
+            $this->translator,
             []
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
 
-        $this->timeProvider->removeFormProtection('my-form')
-            ->shouldNotHaveBeenCalled()
-        ;
+        $this->timeProvider->expects(static::never())->method('removeFormProtection');
     }
 
     /**
-     * @param FormConfigInterface|ObjectProphecy $config
-     *
-     * @return FormInterface|ObjectProphecy
+     * @return MockObject&FormInterface
      */
-    private function prepareForm($config, bool $root = false)
+    private function prepareForm(FormConfigInterface $config, bool $root = false): FormInterface
     {
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
+        $form = $this->createMock(FormInterface::class);
+        $form->method('isRoot')
             ->willReturn($root)
         ;
-        $form->getConfig()
+        $form->method('getConfig')
             ->willReturn($config)
         ;
-        $form->getName()
+        $form->method('getName')
             ->willReturn('my-form')
         ;
 
