@@ -47,7 +47,7 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
         $this->fieldName         = $fieldName;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             FormEvents::PRE_SUBMIT => 'preSubmit',

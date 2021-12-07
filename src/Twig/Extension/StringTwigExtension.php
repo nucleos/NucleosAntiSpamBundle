@@ -47,7 +47,7 @@ final class StringTwigExtension extends AbstractExtension
         $this->mailDotText  = $mailDotText;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('antispam', [$this, 'antispam'], [
@@ -117,6 +117,6 @@ final class StringTwigExtension extends AbstractExtension
             $name = substr($name, 0, $index);
         }
 
-        return str_replace('.', $this->mailDotText[array_rand($this->mailDotText)], $name ?? '');
+        return str_replace('.', $this->mailDotText[array_rand($this->mailDotText)], $name);
     }
 }

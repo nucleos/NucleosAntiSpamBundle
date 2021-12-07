@@ -14,11 +14,12 @@ declare(strict_types=1);
 namespace Nucleos\AntiSpamBundle;
 
 use Nucleos\AntiSpamBundle\DependencyInjection\NucleosAntiSpamExtension;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class NucleosAntiSpamBundle extends Bundle
 {
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         if (null === $this->extension) {
             $this->extension = new NucleosAntiSpamExtension();
