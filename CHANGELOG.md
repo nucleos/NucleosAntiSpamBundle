@@ -2,27 +2,32 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.3.0 - TBD
+## 2.3.0 - 2021-12-07
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.3.0](https://github.com/nucleos/NucleosAntiSpamBundle/milestone/3)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 2.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **6**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [400: Add symfony 6 support](https://github.com/nucleos/NucleosAntiSpamBundle/pull/400) thanks to @core23
+ - [397: Drop symfony 4 support](https://github.com/nucleos/NucleosAntiSpamBundle/pull/397) thanks to @core23
+ - [390: Drop PHP 7 support](https://github.com/nucleos/NucleosAntiSpamBundle/pull/390) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [399: Fix session deprecations](https://github.com/nucleos/NucleosAntiSpamBundle/pull/399) thanks to @core23
+ - [398: Drop node-sass](https://github.com/nucleos/NucleosAntiSpamBundle/pull/398) thanks to @core23
+ - [396: Update tools and use make to run them](https://github.com/nucleos/NucleosAntiSpamBundle/pull/396) thanks to @core23
 
 ## 2.2.0 - 2021-02-07
 
