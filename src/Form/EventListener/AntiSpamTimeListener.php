@@ -32,21 +32,18 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
      */
     private const TRANSLATION_DOMAIN = 'NucleosAntiSpamBundle';
 
-    /**
-     * @var TimeProviderInterface
-     */
-    private $timeProvider;
+    private TimeProviderInterface $timeProvider;
+
+    private TranslatorInterface $translator;
 
     /**
-     * @var TranslatorInterface
+     * @var array<string, mixed>
      */
-    private $translator;
+    private array $options;
 
     /**
-     * @var array
+     * @param array<string, mixed> $options
      */
-    private $options;
-
     public function __construct(TimeProviderInterface $timeProvider, TranslatorInterface $translator, array $options)
     {
         $this->timeProvider      = $timeProvider;

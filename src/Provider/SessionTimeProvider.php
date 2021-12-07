@@ -19,10 +19,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 final class SessionTimeProvider implements TimeProviderInterface
 {
-    /**
-     * @var Session
-     */
-    private $session;
+    private Session $session;
 
     public function __construct(Session $session)
     {

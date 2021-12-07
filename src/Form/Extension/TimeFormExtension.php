@@ -25,21 +25,18 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class TimeFormExtension extends AbstractTypeExtension
 {
-    /**
-     * @var TimeProviderInterface
-     */
-    private $timeProvider;
+    private TimeProviderInterface $timeProvider;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
     /**
      * @var array<string, mixed>
      */
-    private $defaults;
+    private array $defaults;
 
+    /**
+     * @param array<string, mixed> $defaults
+     */
     public function __construct(TimeProviderInterface $timeProvider, TranslatorInterface $translator, array $defaults)
     {
         $this->timeProvider      = $timeProvider;

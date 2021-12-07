@@ -21,20 +21,17 @@ final class StringTwigExtension extends AbstractExtension
     private const MAIL_HTML_PATTERN = '/\<a(?:[^>]+)href\=\"mailto\:([^">]+)\"(?:[^>]*)\>(.*?)\<\/a\>/ism';
     private const MAIL_TEXT_PATTERN = '/(([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\.([A-Z]{2,4})(\((.+?)\))?)/i';
 
-    /**
-     * @var string|null
-     */
-    private $mailCssClass;
+    private ?string $mailCssClass;
 
     /**
      * @var string[]
      */
-    private $mailAtText;
+    private array $mailAtText;
 
     /**
      * @var string[]
      */
-    private $mailDotText;
+    private array $mailDotText;
 
     /**
      * @param string[] $mailAtText

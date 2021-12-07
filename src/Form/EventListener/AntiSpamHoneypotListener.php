@@ -31,15 +31,9 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
      */
     private const TRANSLATION_DOMAIN = 'NucleosAntiSpamBundle';
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
-    /**
-     * @var string
-     */
-    private $fieldName;
+    private string $fieldName;
 
     public function __construct(TranslatorInterface $translator, string $fieldName)
     {
