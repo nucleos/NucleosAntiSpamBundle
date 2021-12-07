@@ -14,10 +14,8 @@ declare(strict_types=1);
 namespace Nucleos\AntiSpamBundle\Tests\Form\EventListener;
 
 use Nucleos\AntiSpamBundle\Form\EventListener\AntiSpamHoneypotListener;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Form\FormConfigInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
@@ -27,16 +25,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamHoneypotListenerTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<TranslatorInterface>
+     * @var MockObject&TranslatorInterface
      */
     private $translator;
 
     protected function setUp(): void
     {
-        $this->translator = $this->prophesize(TranslatorInterface::class);
+        $this->translator = $this->createMock(TranslatorInterface::class);
     }
 
     public function testGetSubscribedEvents(): void
@@ -48,142 +44,138 @@ final class AntiSpamHoneypotListenerTest extends TestCase
 
     public function testPreSubmit(): void
     {
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(true)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
+        $form = $this->createMock(FormInterface::class);
+        $form->method('isRoot')
             ->willReturn(true)
         ;
-        $form->getConfig()
+        $form->method('getConfig')
             ->willReturn($config)
         ;
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
-        $event->getData()
+        $event->method('getData')
             ->willReturn([
                 'foo'      => 'bar',
                 'my-field' => '',
             ])
         ;
-        $event->setData([
+        $event->expects(static::once())->method('setData')->with([
             'foo' => 'bar',
-        ])
-        ->shouldBeCalled()
-        ;
+        ]);
 
         $listener = new AntiSpamHoneypotListener(
-            $this->translator->reveal(),
+            $this->translator,
             'my-field'
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
     }
 
     public function testPreSubmitWithFilledHoneypot(): void
     {
-        $this->translator->trans('honeypot_error', [], 'NucleosAntiSpamBundle')
+        $this->translator->method('trans')->with('honeypot_error', [], 'NucleosAntiSpamBundle')
             ->willReturn('There is an error')
         ;
 
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(true)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
+        $form = $this->createMock(FormInterface::class);
+        $form->method('isRoot')
             ->willReturn(true)
         ;
-        $form->getConfig()
+        $form->method('getConfig')
             ->willReturn($config)
         ;
-        $form->addError(Argument::type(FormError::class))
-            ->shouldBeCalled()
+        $form->expects(static::once())->method('addError')
+            ->with(static::isInstanceOf(FormError::class))
         ;
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
-        $event->getData()
+        $event->method('getData')
             ->willReturn([
                 'foo'      => 'bar',
                 'my-field' => 'def',
             ])
         ;
-        $event->setData([
+        $event->expects(static::once())->method('setData')->with([
             'foo' => 'bar',
-        ])
-        ->shouldBeCalled()
-        ;
+        ]);
 
         $listener = new AntiSpamHoneypotListener(
-            $this->translator->reveal(),
+            $this->translator,
             'my-field'
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
     }
 
     public function testPreSubmitChildForm(): void
     {
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(false)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
+        $form = $this->createMock(FormInterface::class);
+        $form->method('isRoot')
             ->willReturn(false)
         ;
-        $form->getConfig()
+        $form->method('getConfig')
             ->willReturn($config)
         ;
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
 
         $listener = new AntiSpamHoneypotListener(
-            $this->translator->reveal(),
+            $this->translator,
             'my-field'
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
 
-        $form->addError(Argument::any())->shouldNotHaveBeenCalled();
+        $form->expects(static::never())->method('addError');
     }
 
     public function testPreSubmitCompoundForm(): void
     {
-        $config = $this->prophesize(FormConfigInterface::class);
-        $config->getOption('compound')
+        $config = $this->createMock(FormConfigInterface::class);
+        $config->method('getOption')->with('compound')
             ->willReturn(true)
         ;
 
-        $form = $this->prophesize(FormInterface::class);
-        $form->isRoot()
+        $form = $this->createMock(FormInterface::class);
+        $form->method('isRoot')
             ->willReturn(false)
         ;
-        $form->getConfig()
+        $form->method('getConfig')
             ->willReturn($config)
         ;
 
-        $event = $this->prophesize(FormEvent::class);
-        $event->getForm()
+        $event = $this->createMock(FormEvent::class);
+        $event->method('getForm')
             ->willReturn($form)
         ;
 
         $listener = new AntiSpamHoneypotListener(
-            $this->translator->reveal(),
+            $this->translator,
             'my-field'
         );
-        $listener->preSubmit($event->reveal());
+        $listener->preSubmit($event);
 
-        $form->addError(Argument::any())->shouldNotHaveBeenCalled();
+        $form->expects(static::never())->method('addError');
     }
 }

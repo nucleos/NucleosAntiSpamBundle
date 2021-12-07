@@ -46,21 +46,6 @@ parameters:
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$children\\.$#"
-			count: 2
-			path: tests/Form/Extension/HoneypotFormExtensionTest.php
-
-		-
-			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$parent\\.$#"
-			count: 1
-			path: tests/Form/Extension/HoneypotFormExtensionTest.php
-
-		-
-			message: "#^Access to an undefined property Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Form\\\\FormView\\>\\:\\:\\$parent\\.$#"
-			count: 1
-			path: tests/Form/Extension/TimeFormExtensionTest.php
-
-		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Twig\\\\\\\\TwigFilter' and Twig\\\\TwigFilter will always evaluate to true\\.$#"
 			count: 1
 			path: tests/Twig/Extension/StringTwigExtensionTest.php
