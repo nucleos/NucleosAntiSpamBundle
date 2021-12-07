@@ -27,15 +27,12 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class HoneypotFormExtension extends AbstractTypeExtension
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
     /**
      * @var array<string, mixed>
      */
-    private $defaults;
+    private array $defaults;
 
     public function __construct(TranslatorInterface $translator, array $defaults)
     {

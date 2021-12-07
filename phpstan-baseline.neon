@@ -6,16 +6,6 @@ parameters:
 			path: src/DependencyInjection/NucleosAntiSpamExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/EventListener/AntiSpamTimeListener.php
-
-		-
-			message: "#^Property Nucleos\\\\AntiSpamBundle\\\\Form\\\\EventListener\\\\AntiSpamTimeListener\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/EventListener/AntiSpamTimeListener.php
-
-		-
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\HoneypotFormExtension\\:\\:__construct\\(\\) has parameter \\$defaults with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Extension/HoneypotFormExtension.php
@@ -31,11 +21,6 @@ parameters:
 			path: src/Form/Extension/HoneypotFormExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Form\\\\Extension\\\\TimeFormExtension\\:\\:__construct\\(\\) has parameter \\$defaults with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Extension/TimeFormExtension.php
-
-		-
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Provider\\\\SessionTimeProvider\\:\\:isValid\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Provider/SessionTimeProvider.php
@@ -44,11 +29,6 @@ parameters:
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Provider\\\\TimeProviderInterface\\:\\:isValid\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Provider/TimeProviderInterface.php
-
-		-
-			message: "#^Variable \\$name on left side of \\?\\? always exists and is not nullable\\.$#"
-			count: 1
-			path: src/Twig/Extension/StringTwigExtension.php
 
 		-
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
