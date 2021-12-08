@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.3.1 - TBD
+## 2.3.1 - 2021-12-08
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.3.1](https://github.com/nucleos/NucleosAntiSpamBundle/milestone/5)
 
-- Nothing.
+2.3.x bugfix release (patch)
 
-### Deprecated
+### 2.3.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [412: Fix deprecation warning](https://github.com/nucleos/NucleosAntiSpamBundle/pull/412) thanks to @core23
 
 ## 2.3.0 - 2021-12-07
 
