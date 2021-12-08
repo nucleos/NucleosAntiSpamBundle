@@ -28,7 +28,10 @@ final class SessionTimeProvider implements TimeProviderInterface
         if ($requestStackOrDeprecatedSession instanceof SessionInterface) {
             $this->session = $requestStackOrDeprecatedSession;
 
-            trigger_error(sprintf('Passing a session is deprecated. Use %s instead', RequestStack::class));
+            @trigger_error(
+                sprintf('Passing a session is deprecated. Use %s instead', RequestStack::class),
+                E_USER_DEPRECATED
+            );
 
             return;
         }
