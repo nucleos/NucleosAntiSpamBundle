@@ -55,7 +55,7 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            FormEvents::PRE_SUBMIT => 'preSubmit',
+            FormEvents::PRE_SUBMIT  => 'preSubmit',
             FormEvents::POST_SUBMIT => 'postSubmit',
         ];
     }
@@ -77,11 +77,6 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
         $this->timeProvider->removeFormProtection($form->getName());
     }
 
-    private function isApplicableToForm(FormInterface $form): bool
-    {
-        return $form->isRoot() && null !== $form->getConfig()->getOption('compound');
-    }
-
     public function postSubmit(FormEvent $event): void
     {
         $form = $event->getForm();
@@ -94,5 +89,10 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
         if (!$form->isValid()) {
             $this->timeProvider->createFormProtection($form->getName());
         }
+    }
+
+    private function isApplicableToForm(FormInterface $form): bool
+    {
+        return $form->isRoot() && null !== $form->getConfig()->getOption('compound');
     }
 }
