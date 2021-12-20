@@ -56,6 +56,7 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
     {
         return [
             FormEvents::PRE_SUBMIT => 'preSubmit',
+            FormEvents::POST_SUBMIT => 'postSubmit',
         ];
     }
 
