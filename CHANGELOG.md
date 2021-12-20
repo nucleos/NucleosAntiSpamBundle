@@ -70,10 +70,27 @@ Feature release (minor)
  - [398: Drop node-sass](https://github.com/nucleos/NucleosAntiSpamBundle/pull/398) thanks to @core23
  - [396: Update tools and use make to run them](https://github.com/nucleos/NucleosAntiSpamBundle/pull/396) thanks to @core23
 
-## 2.2.0 - 2021-02-07
+## 2.2.1 - 2021-12-20
+
 
 -----
 
+### Release Notes for [2.2.1](https://github.com/nucleos/NucleosAntiSpamBundle/milestone/2)
+
+2.2.x bugfix release (patch)
+
+### 2.2.1
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [421: Fix issue with time protection](https://github.com/nucleos/NucleosAntiSpamBundle/pull/421) thanks to @matgrula
+
+
+## 2.2.0 - 2021-02-07
 
 -----
 
