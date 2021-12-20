@@ -18,6 +18,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class AntiSpamTimeListener implements EventSubscriberInterface
@@ -62,7 +63,7 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
     {
         $form = $event->getForm();
 
-        if (!$form->isRoot() || null === $form->getConfig()->getOption('compound')) {
+        if (!$this->isApplicableToForm($form)) {
             return;
         }
 
@@ -73,5 +74,24 @@ final class AntiSpamTimeListener implements EventSubscriberInterface
 
         // Remove old entry
         $this->timeProvider->removeFormProtection($form->getName());
+    }
+
+    private function isApplicableToForm(FormInterface $form): bool
+    {
+        return $form->isRoot() && null !== $form->getConfig()->getOption('compound');
+    }
+
+    public function postSubmit(FormEvent $event): void
+    {
+        $form = $event->getForm();
+
+        if (!$this->isApplicableToForm($form)) {
+            return;
+        }
+
+        // If form has errors, set the time again
+        if (!$form->isValid()) {
+            $this->timeProvider->createFormProtection($form->getName());
+        }
     }
 }
