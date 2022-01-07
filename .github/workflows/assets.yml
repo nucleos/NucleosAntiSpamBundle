@@ -1,0 +1,31 @@
+name: 'Assets'
+
+on:
+  create:
+  pull_request:
+  push:
+    branches:
+      - '[0-9]+.[0-9]+.x'
+      - 'refs/pull/*'
+
+jobs:
+  webpack:
+    name: 'Build Assets'
+
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2.4.0"
+
+      - name: "Using Node"
+        uses: "actions/setup-node@v2.5.1"
+
+      - name: "Install dependencies"
+        run: "yarn"
+
+      - name: "Build"
+        run: "yarn build"
+
+      - name: "Check size"
+        run: "yarn size"
