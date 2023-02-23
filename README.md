@@ -53,7 +53,7 @@ In a controller:
 $this->createForm(CustomFormType:class, null, [
     // Time protection
     'antispam_time'     => true,
-    'antispam_time_min' => 10,
+    'antispam_time_min' => 10, // seconds
     'antispam_time_max' => 60,
 
     // Honeypot protection
