@@ -32,7 +32,7 @@ composer require nucleos/antispam-bundle
 
 ### Enable the Bundle
 
-Then, enable the bundle by adding it to the list of registered bundles in `config/bundles.php` file of your project:
+In older versions of Symfony, you need to enable it manually:
 
 ```php
 // config/bundles.php
@@ -47,10 +47,10 @@ return [
 
 ### Form based protection
 
-Create a form on the fly:
+In a controller:
 
 ```php
-$this->createForm(CustomFormType:class, null, array(
+$this->createForm(CustomFormType:class, null, [
     // Time protection
     'antispam_time'     => true,
     'antispam_time_min' => 10,
@@ -60,7 +60,26 @@ $this->createForm(CustomFormType:class, null, array(
     'antispam_honeypot'       => true,
     'antispam_honeypot_class' => 'hide-me',
     'antispam_honeypot_field' => 'email-repeat',
-))
+])
+```
+
+In a form class:
+
+```php
+class MyType extends AbstractType
+{
+    // ...
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            // ...
+            'antispam_time'     => true,
+            'antispam_time_min' => 10,
+            // same as above
+        ]);
+    }
+}
 ```
 
 ### Twig email address obfuscation
@@ -86,23 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
 It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
 to include the JavaScript library in your page. This file is located in the `assets` folder.
 
-### Global protection
-
-Add protection to all forms using the configuration:
-
-```yaml
-# config/packages/nucleos_antispam.yaml
-
-nucleos_antispam:
-    # Time protection
-    time:
-        global: true
-
-    # Honeypot protection
-    honeypot:
-        global: true
-```
-
 ### Configure the Bundle
 
 Create a configuration file called `nucleos_antispam.yaml`:
@@ -122,7 +124,7 @@ nucleos_antispam:
     time:
         min: 5
         max: 3600
-        global: false
+        global: true # This will add antispam to all forms
 
     # Honeypot protection
     honeypot:
