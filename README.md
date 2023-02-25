@@ -131,7 +131,7 @@ nucleos_antispam:
         field: 'email_address'
         class: 'hidden'
         global: false
-        provider: 'nucleos_antispam.provider.session'
+        provider: 'nucleos_antispam.provider.session' # This is the only provider at the moment
 ```
 
 ## License
