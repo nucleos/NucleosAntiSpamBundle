@@ -4,21 +4,23 @@
     "homepage": "https://nucleos.rocks",
     "author": "Christian Gripp <mail@core23.de>",
     "devDependencies": {
-        "@babel/core": "^7.7.4",
-        "@babel/preset-env": "^7.7.4",
-        "@size-limit/preset-small-lib": "^4.1.1",
-        "@size-limit/webpack": "^4.1.1",
-        "@symfony/webpack-encore": "^4.0.0",
+        "@babel/core": "^7.20.12",
+        "@babel/preset-env": "^7.20.2",
+        "@size-limit/esbuild": "^8.1.1",
+        "@size-limit/preset-small-lib": "^8.1.2",
+        "@symfony/webpack-encore": "^4.2.0",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^9.0.0",
-        "eslint": "^8.0.0",
+        "eslint": "^8.32.0",
         "eslint-config-airbnb": "^19.0.0",
-        "eslint-plugin-import": "^2.20.2",
         "eslint-loader": "^4.0.0",
+        "eslint-plugin-import": "^2.27.5",
         "eslint-watch": "^8.0.0",
-        "sass": "^1.44.0",
-        "sass-loader": "^13.0.0",
-        "size-limit": "^4.1.1"
+        "sass": "^1.57.1",
+        "sass-loader": "^13.2.0",
+        "size-limit": "^8.1.2",
+        "webpack": "^5.72",
+        "webpack-cli": "^4.9.1"
     },
     "main": "assets/widget.js",
     "files": [
@@ -30,12 +32,5 @@
         "size": "size-limit",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
-    },
-    "size-limit": [
-        {
-            "path": "src/Resources/public/widget.js",
-            "gzip": false,
-            "limit": "2 KB"
-        }
-    ]
+    }
 }
