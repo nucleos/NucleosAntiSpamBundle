@@ -15,39 +15,22 @@ namespace Nucleos\AntiSpamBundle\Provider;
 
 use DateTime;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 final class SessionTimeProvider implements TimeProviderInterface
 {
-    private SessionInterface $session;
+    private RequestStack $requestStack;
 
-    public function __construct(object $requestStackOrDeprecatedSession)
+    public function __construct(RequestStack $requestStack)
     {
-        if ($requestStackOrDeprecatedSession instanceof SessionInterface) {
-            $this->session = $requestStackOrDeprecatedSession;
-
-            @trigger_error(
-                sprintf('Passing a session is deprecated. Use %s instead', RequestStack::class),
-                E_USER_DEPRECATED
-            );
-
-            return;
-        }
-
-        if (!$requestStackOrDeprecatedSession instanceof RequestStack) {
-            throw new InvalidArgumentException(sprintf('Expected a %s, %s given', RequestStack::class, \get_class($requestStackOrDeprecatedSession)));
-        }
-
-        $this->session = $requestStackOrDeprecatedSession->getSession();
+        $this->requestStack = $requestStack;
     }
 
     public function createFormProtection(string $name): void
     {
         $startTime = new DateTime();
         $key       = $this->getSessionKey($name);
-        $this->session->set($key, $startTime);
+        $this->requestStack->getSession()->set($key, $startTime);
     }
 
     public function isValid(string $name, array $options): bool
@@ -74,7 +57,7 @@ final class SessionTimeProvider implements TimeProviderInterface
     public function removeFormProtection(string $name): void
     {
         $key = $this->getSessionKey($name);
-        $this->session->remove($key);
+        $this->requestStack->getSession()->remove($key);
     }
 
     /**
@@ -84,7 +67,7 @@ final class SessionTimeProvider implements TimeProviderInterface
     {
         $key = $this->getSessionKey($name);
 
-        return $this->session->has($key);
+        return $this->requestStack->getSession()->has($key);
     }
 
     /**
@@ -97,7 +80,7 @@ final class SessionTimeProvider implements TimeProviderInterface
         $key = $this->getSessionKey($name);
 
         if ($this->hasFormProtection($name)) {
-            return $this->session->get($key);
+            return $this->requestStack->getSession()->get($key);
         }
 
         return null;
