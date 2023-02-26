@@ -7,7 +7,6 @@ Encore
   .cleanupOutputBeforeBuild()
   .disableSingleRuntimeChunk()
   .enableSourceMaps(!Encore.isProduction())
-  .enableEslintLoader()
   .addEntry('widget', './assets/widget.js')
 ;
 
