@@ -34,7 +34,9 @@ final class AppKernel extends Kernel
     public function registerBundles(): iterable
     {
         yield new FrameworkBundle();
+
         yield new TwigBundle();
+
         yield new NucleosAntiSpamBundle();
     }
 
@@ -59,7 +61,7 @@ final class AppKernel extends Kernel
             $routes
                     ->add('twig-test', '/twig-test')
                     ->controller(TwigTestController::class)
-                ;
+            ;
 
             return;
         }

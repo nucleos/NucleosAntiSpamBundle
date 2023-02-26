@@ -158,7 +158,7 @@ final class AntiSpamTimeListenerTest extends TestCase
     }
 
     /**
-     * @return MockObject&FormInterface
+     * @return FormInterface&MockObject
      */
     private function prepareForm(FormConfigInterface $config, bool $root = false): FormInterface
     {

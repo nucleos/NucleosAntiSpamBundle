@@ -58,6 +58,7 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsValidWithMaxTime(): void
     {
         $session  = $this->prepareValidSessionKey();
+
         /** @var RequestStack $stack */
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
@@ -94,6 +95,7 @@ final class SessionTimeProviderTest extends TestCase
     public function testIsInvalidBecauseOfMaxTime(): void
     {
         $session  = $this->prepareValidSessionKey();
+
         /** @var RequestStack $stack */
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
