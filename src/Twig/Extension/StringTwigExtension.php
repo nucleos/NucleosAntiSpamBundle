@@ -75,10 +75,10 @@ final class StringTwigExtension extends AbstractExtension
      */
     private function encryptMailText(array $matches): string
     {
-        $email = $matches[1];
+        [$original, $email] = $matches;
 
         return $this->getSecuredName($email).
-            $this->mailAtText[array_rand($this->mailAtText)].
+            $this->hashedArrayValue($this->mailAtText, $original).
             $this->getSecuredName($email, true);
     }
 
@@ -87,7 +87,7 @@ final class StringTwigExtension extends AbstractExtension
      */
     private function encryptMail(array $matches): string
     {
-        [, $email, $text] = $matches;
+        [$original, $email, $text] = $matches;
 
         if ($text === $email) {
             $text = '';
@@ -96,7 +96,7 @@ final class StringTwigExtension extends AbstractExtension
         return
             '<span'.(null !== $this->mailCssClass ? ' class="'.$this->mailCssClass.'"' : '').'>'.
             '<span>'.$this->getSecuredName($email).'</span>'.
-                $this->mailAtText[array_rand($this->mailAtText)].
+                $this->hashedArrayValue($this->mailAtText, $original).
             '<span>'.$this->getSecuredName($email, true).'</span>'.
             ('' !== $text ? ' (<span>'.$text.'</span>)' : '').
             '</span>';
@@ -114,6 +114,24 @@ final class StringTwigExtension extends AbstractExtension
             $name = substr($name, 0, $index);
         }
 
-        return str_replace('.', $this->mailDotText[array_rand($this->mailDotText)], $name);
+        return str_replace('.', $this->hashedArrayValue($this->mailDotText, $name), $name);
+    }
+
+    /**
+     * @param string[] $list
+     */
+    private function hashedArrayValue(array $list, string $name): string
+    {
+        $count = \count($list);
+        $index = $this->numericHash($name) % $count;
+
+        return $list[$index];
+    }
+
+    private function numericHash(string $name): int
+    {
+        $hash = hash('sha256', $name);
+
+        return \intval(substr($hash, 0, 6), 16);
     }
 }
