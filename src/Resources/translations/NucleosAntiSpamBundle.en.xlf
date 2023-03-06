@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="time_error">
         <source>time_error</source>
-        <target>You are doing this to fast.</target>
+        <target>You are doing this too fast.</target>
       </trans-unit>
       <trans-unit id="honeypot_error">
         <source>honeypot_error</source>
