@@ -131,8 +131,12 @@ nucleos_antispam:
         field: 'email_address'
         class: 'hidden'
         global: false
-        provider: 'nucleos_antispam.provider.session' # This is the only provider at the moment
+        provider: 'nucleos_antispam.provider.session' # This is the only built-in provider at the moment
 ```
+
+### Creating a Custom Honeypot Provider
+
+See `Nucleos\AntiSpamBundle\Provider\SessionTimeProvider` as a starting point;
 
 ## License
 
