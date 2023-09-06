@@ -3683,7 +3683,7 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-lilconfig@^2.0.3, lilconfig@^2.0.6:
+lilconfig@^2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.6.tgz#32a384558bd58af3d4c6e077dd1ad1d397bc69d4"
   integrity sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==
@@ -4917,7 +4917,7 @@ signal-exit@^3.0.3:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-size-limit@9.0.0:
+size-limit@9.0.0, size-limit@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-9.0.0.tgz#203c47303462a8351976eb26175acea5f4e80447"
   integrity sha512-DrA7o2DeRN3s+vwCA9nn7Ck9Y4pn9t0GNUwQRpKqBtBmNkl6LA2s/NlNCdtKHrEkRTeYA1ZQ65mnYveo9rUqgA==
@@ -4926,18 +4926,6 @@ size-limit@9.0.0:
     chokidar "^3.5.3"
     globby "^11.1.0"
     lilconfig "^2.1.0"
-    nanospinner "^1.1.0"
-    picocolors "^1.0.0"
-
-size-limit@^8.1.2:
-  version "8.2.4"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-8.2.4.tgz#0ab0df7cbc89007d544a50b451f5fb4d110694ca"
-  integrity sha512-Un16nSreD1v2CYwSorattiJcHuAWqXvg4TsGgzpjnoByqQwsSfCIEQHuaD14HNStzredR8cdsO9oGH91ibypTA==
-  dependencies:
-    bytes-iec "^3.1.1"
-    chokidar "^3.5.3"
-    globby "^11.1.0"
-    lilconfig "^2.0.6"
     nanospinner "^1.1.0"
     picocolors "^1.0.0"
 
