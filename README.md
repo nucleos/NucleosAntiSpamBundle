@@ -132,6 +132,12 @@ nucleos_antispam:
         class: 'hidden'
         global: false
         provider: 'nucleos_antispam.provider.session'
+
+when@test:
+    nucleos_antispam:
+        time:
+            # This will allow you to submit forms in your tests without having to fake the wait
+            min: 0
 ```
 
 ## License
