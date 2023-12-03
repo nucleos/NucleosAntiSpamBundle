@@ -48,10 +48,10 @@ final class HoneypotFormExtensionTest extends TestCase
         $builder->method('getFormFactory')
             ->willReturn($factory)
         ;
-        $builder->expects(static::once())->method('setAttribute')->with('antispam_honeypot_factory', $factory)
+        $builder->expects(self::once())->method('setAttribute')->with('antispam_honeypot_factory', $factory)
             ->willReturn($builder)
         ;
-        $builder->expects(static::once())->method('addEventSubscriber')->with(static::isInstanceOf(AntiSpamHoneypotListener::class))
+        $builder->expects(self::once())->method('addEventSubscriber')->with(self::isInstanceOf(AntiSpamHoneypotListener::class))
             ->willReturn($builder)
         ;
 
@@ -80,7 +80,7 @@ final class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        $builder->expects(static::never())->method('addEventSubscriber');
+        $builder->expects(self::never())->method('addEventSubscriber');
     }
 
     public function testFinishView(): void
@@ -131,7 +131,7 @@ final class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        static::assertSame($parenView, $view->children['hidden-field']);
+        self::assertSame($parenView, $view->children['hidden-field']);
     }
 
     public function testFinishWithEmptyClass(): void
@@ -181,7 +181,7 @@ final class HoneypotFormExtensionTest extends TestCase
             'antispam_honeypot_field' => 'hidden-field',
         ]);
 
-        static::assertSame($parenView, $view->children['hidden-field']);
+        self::assertSame($parenView, $view->children['hidden-field']);
     }
 
     public function testFinishWithExistingField(): void
@@ -243,7 +243,7 @@ final class HoneypotFormExtensionTest extends TestCase
         $view         = $this->createMock(FormView::class);
         $view->parent = $this->createMock(FormView::class);
         $form         = $this->createMock(FormInterface::class);
-        $form->expects(static::never())->method('getConfig');
+        $form->expects(self::never())->method('getConfig');
 
         $extension = new HoneypotFormExtension(
             $this->translator,
@@ -261,7 +261,7 @@ final class HoneypotFormExtensionTest extends TestCase
     {
         $view = $this->createMock(FormView::class);
         $form = $this->createMock(FormInterface::class);
-        $form->expects(static::never())->method('getConfig');
+        $form->expects(self::never())->method('getConfig');
 
         $extension = new HoneypotFormExtension(
             $this->translator,
@@ -291,13 +291,13 @@ final class HoneypotFormExtensionTest extends TestCase
 
         $result = $resolver->resolve();
 
-        static::assertTrue($result['antispam_honeypot']);
-        static::assertSame('my-class', $result['antispam_honeypot_class']);
-        static::assertSame('a-field', $result['antispam_honeypot_field']);
+        self::assertTrue($result['antispam_honeypot']);
+        self::assertSame('my-class', $result['antispam_honeypot_class']);
+        self::assertSame('a-field', $result['antispam_honeypot_field']);
     }
 
     public function testExtendedTypes(): void
     {
-        static::assertSame([FormType::class], HoneypotFormExtension::getExtendedTypes());
+        self::assertSame([FormType::class], HoneypotFormExtension::getExtendedTypes());
     }
 }

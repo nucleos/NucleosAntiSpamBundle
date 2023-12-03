@@ -60,7 +60,7 @@ final class AntiSpamHoneypotListener implements EventSubscriberInterface
 
         // Honeypot trap hit
         if (!isset($data[$this->fieldName]) || '' !== (string) $data[$this->fieldName]) {
-            $form->addError(new FormError($this->translator->trans(static::ERROR_MESSAGE, [], static::TRANSLATION_DOMAIN)));
+            $form->addError(new FormError($this->translator->trans(self::ERROR_MESSAGE, [], self::TRANSLATION_DOMAIN)));
         }
 
         // Remove honeypot

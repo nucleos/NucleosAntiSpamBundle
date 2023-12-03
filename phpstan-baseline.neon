@@ -51,7 +51,7 @@ parameters:
 			path: tests/Twig/Extension/StringTwigExtensionTest.php
 
 		-
-			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Tests\\\\Twig\\\\Extension\\\\StringTwigExtensionTest\\:\\:getMailHtml\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Tests\\\\Twig\\\\Extension\\\\StringTwigExtensionTest\\:\\:provideAntispamCases\\(\\) return type has no value type specified in iterable type iterable\\.$#"
 			count: 1
 			path: tests/Twig/Extension/StringTwigExtensionTest.php
 

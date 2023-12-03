@@ -37,7 +37,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
 
     public function testGetSubscribedEvents(): void
     {
-        static::assertSame([
+        self::assertSame([
             FormEvents::PRE_SUBMIT => 'preSubmit',
         ], AntiSpamHoneypotListener::getSubscribedEvents());
     }
@@ -67,7 +67,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
                 'my-field' => '',
             ])
         ;
-        $event->expects(static::once())->method('setData')->with([
+        $event->expects(self::once())->method('setData')->with([
             'foo' => 'bar',
         ]);
 
@@ -96,8 +96,8 @@ final class AntiSpamHoneypotListenerTest extends TestCase
         $form->method('getConfig')
             ->willReturn($config)
         ;
-        $form->expects(static::once())->method('addError')
-            ->with(static::isInstanceOf(FormError::class))
+        $form->expects(self::once())->method('addError')
+            ->with(self::isInstanceOf(FormError::class))
         ;
 
         $event = $this->createMock(FormEvent::class);
@@ -110,7 +110,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
                 'my-field' => 'def',
             ])
         ;
-        $event->expects(static::once())->method('setData')->with([
+        $event->expects(self::once())->method('setData')->with([
             'foo' => 'bar',
         ]);
 
@@ -147,7 +147,7 @@ final class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event);
 
-        $form->expects(static::never())->method('addError');
+        $form->expects(self::never())->method('addError');
     }
 
     public function testPreSubmitCompoundForm(): void
@@ -176,6 +176,6 @@ final class AntiSpamHoneypotListenerTest extends TestCase
         );
         $listener->preSubmit($event);
 
-        $form->expects(static::never())->method('addError');
+        $form->expects(self::never())->method('addError');
     }
 }

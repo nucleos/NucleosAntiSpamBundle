@@ -25,35 +25,35 @@ final class StringTwigExtensionTest extends TestCase
 
         $filters = $extension->getFilters();
 
-        static::assertNotCount(0, $filters);
+        self::assertNotCount(0, $filters);
 
         foreach ($filters as $filter) {
-            static::assertInstanceOf(TwigFilter::class, $filter);
-            static::assertIsCallable($filter->getCallable());
+            self::assertInstanceOf(TwigFilter::class, $filter);
+            self::assertIsCallable($filter->getCallable());
         }
     }
 
     /**
-     * @dataProvider getMailHtml
+     * @dataProvider provideAntispamCases
      */
     public function testAntispam(string $input, string $output): void
     {
         $extension = new StringTwigExtension('spam', ['[AT]', '[ÄT]', '(AT)', '|AT|'], ['[DOT]', ' PUNKT ', '[.]']);
 
-        static::assertSame($output, $extension->antispam($input));
+        self::assertSame($output, $extension->antispam($input));
     }
 
     /**
-     * @dataProvider getMailText
+     * @dataProvider provideAntispamTextCases
      */
     public function testAntispamText(string $input, string $output): void
     {
         $extension = new StringTwigExtension('spam', ['[AT]', '[ÄT]', '(AT)', '|AT|'], ['[DOT]', ' PUNKT ', '[.]']);
 
-        static::assertSame($output, $extension->antispam($input, false));
+        self::assertSame($output, $extension->antispam($input, false));
     }
 
-    public function getMailHtml(): iterable
+    public function provideAntispamCases(): iterable
     {
         // @noinspection JSUnusedLocalSymbols
         return [
@@ -79,7 +79,7 @@ final class StringTwigExtensionTest extends TestCase
     /**
      * @return string[][]
      */
-    public function getMailText(): iterable
+    public function provideAntispamTextCases(): iterable
     {
         return [
             [

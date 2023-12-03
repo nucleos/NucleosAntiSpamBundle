@@ -46,7 +46,7 @@ final class TimeFormExtensionTest extends TestCase
     public function testBuildForm(): void
     {
         $builder = $this->createMock(FormBuilderInterface::class);
-        $builder->expects(static::once())->method('addEventSubscriber')->with(static::isInstanceOf(AntiSpamTimeListener::class));
+        $builder->expects(self::once())->method('addEventSubscriber')->with(self::isInstanceOf(AntiSpamTimeListener::class));
 
         $extension = new TimeFormExtension(
             $this->timeProvider,
@@ -59,13 +59,13 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        $builder->method('addEventSubscriber')->with(static::isInstanceOf(AntiSpamTimeListener::class));
+        $builder->method('addEventSubscriber')->with(self::isInstanceOf(AntiSpamTimeListener::class));
     }
 
     public function testBuildFormWithDisabledAntispam(): void
     {
         $builder = $this->createMock(FormBuilderInterface::class);
-        $builder->expects(static::never())->method('addEventSubscriber');
+        $builder->expects(self::never())->method('addEventSubscriber');
 
         $extension = new TimeFormExtension(
             $this->timeProvider,
@@ -87,7 +87,7 @@ final class TimeFormExtensionTest extends TestCase
             ->willReturn('my_form')
         ;
 
-        $this->timeProvider->expects(static::once())->method('createFormProtection')->with('my_form');
+        $this->timeProvider->expects(self::once())->method('createFormProtection')->with('my_form');
 
         $extension = new TimeFormExtension(
             $this->timeProvider,
@@ -123,7 +123,7 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        $this->timeProvider->expects(static::never())->method('createFormProtection');
+        $this->timeProvider->expects(self::never())->method('createFormProtection');
     }
 
     public function testFinishViewWithDisbaledAntispam(): void
@@ -146,7 +146,7 @@ final class TimeFormExtensionTest extends TestCase
             'antispam_time_max' => 30,
         ]);
 
-        $this->timeProvider->expects(static::never())->method('createFormProtection');
+        $this->timeProvider->expects(self::never())->method('createFormProtection');
     }
 
     public function testConfigureOptions(): void
@@ -166,13 +166,13 @@ final class TimeFormExtensionTest extends TestCase
 
         $result = $resolver->resolve();
 
-        static::assertTrue($result['antispam_time']);
-        static::assertSame(10, $result['antispam_time_min']);
-        static::assertSame(30, $result['antispam_time_max']);
+        self::assertTrue($result['antispam_time']);
+        self::assertSame(10, $result['antispam_time_min']);
+        self::assertSame(30, $result['antispam_time_max']);
     }
 
     public function testExtendedTypes(): void
     {
-        static::assertSame([FormType::class], TimeFormExtension::getExtendedTypes());
+        self::assertSame([FormType::class], TimeFormExtension::getExtendedTypes());
     }
 }

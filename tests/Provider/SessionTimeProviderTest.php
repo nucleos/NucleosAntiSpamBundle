@@ -26,7 +26,7 @@ final class SessionTimeProviderTest extends TestCase
     public function testCreateFromString(): void
     {
         $session = $this->createMock(Session::class);
-        $session->expects(static::once())->method('set')->with('antispam_foobar', static::isInstanceOf(DateTime::class));
+        $session->expects(self::once())->method('set')->with('antispam_foobar', self::isInstanceOf(DateTime::class));
 
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
@@ -40,7 +40,7 @@ final class SessionTimeProviderTest extends TestCase
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
 
-        static::assertTrue($provider->isValid('foobar', []));
+        self::assertTrue($provider->isValid('foobar', []));
     }
 
     public function testIsValidWithMinTime(): void
@@ -50,7 +50,7 @@ final class SessionTimeProviderTest extends TestCase
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
 
-        static::assertTrue($provider->isValid('foobar', [
+        self::assertTrue($provider->isValid('foobar', [
             'min' => 10,
         ]));
     }
@@ -63,7 +63,7 @@ final class SessionTimeProviderTest extends TestCase
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
 
-        static::assertTrue($provider->isValid('foobar', [
+        self::assertTrue($provider->isValid('foobar', [
             'max' => 60,
         ]));
     }
@@ -78,7 +78,7 @@ final class SessionTimeProviderTest extends TestCase
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
 
-        static::assertFalse($provider->isValid('foobar', []));
+        self::assertFalse($provider->isValid('foobar', []));
     }
 
     public function testIsInvalidBecauseOfMinTime(): void
@@ -87,7 +87,7 @@ final class SessionTimeProviderTest extends TestCase
 
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
-        static::assertFalse($provider->isValid('foobar', [
+        self::assertFalse($provider->isValid('foobar', [
             'min' => 60,
         ]));
     }
@@ -100,7 +100,7 @@ final class SessionTimeProviderTest extends TestCase
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
 
-        static::assertFalse($provider->isValid('foobar', [
+        self::assertFalse($provider->isValid('foobar', [
             'max' => 10,
         ]));
     }
@@ -108,7 +108,7 @@ final class SessionTimeProviderTest extends TestCase
     public function testRemoveFormProtection(): void
     {
         $session = $this->createMock(Session::class);
-        $session->expects(static::once())->method('remove')->with('antispam_foobar');
+        $session->expects(self::once())->method('remove')->with('antispam_foobar');
         $stack    = $this->createStack($session);
         $provider = new SessionTimeProvider($stack);
         $provider->removeFormProtection('foobar');
