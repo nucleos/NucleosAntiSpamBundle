@@ -44,7 +44,7 @@ final class AntiSpamTimeListenerTest extends TestCase
 
     public function testGetSubscribedEvents(): void
     {
-        static::assertSame([
+        self::assertSame([
             FormEvents::PRE_SUBMIT => 'preSubmit',
         ], AntiSpamTimeListener::getSubscribedEvents());
     }
@@ -54,8 +54,7 @@ final class AntiSpamTimeListenerTest extends TestCase
         $this->timeProvider->method('isValid')->with('my-form', ['foo' => 'bar'])
             ->willReturn(true)
         ;
-        $this->timeProvider->expects(static::once())->method('removeFormProtection')->with('my-form')
-        ;
+        $this->timeProvider->expects(self::once())->method('removeFormProtection')->with('my-form');
 
         $config = $this->createMock(FormConfigInterface::class);
         $config->method('getOption')->with('compound')
@@ -86,7 +85,7 @@ final class AntiSpamTimeListenerTest extends TestCase
         $this->timeProvider->method('isValid')->with('my-form', ['foo' => 'bar'])
             ->willReturn(false)
         ;
-        $this->timeProvider->expects(static::once())->method('removeFormProtection')->with('my-form');
+        $this->timeProvider->expects(self::once())->method('removeFormProtection')->with('my-form');
 
         $config = $this->createMock(FormConfigInterface::class);
         $config->method('getOption')->with('compound')
@@ -94,7 +93,7 @@ final class AntiSpamTimeListenerTest extends TestCase
         ;
 
         $form = $this->prepareForm($config, true);
-        $form->expects(static::once())->method('addError')->with(static::isInstanceOf(FormError::class));
+        $form->expects(self::once())->method('addError')->with(self::isInstanceOf(FormError::class));
 
         $event = $this->createMock(FormEvent::class);
         $event->method('getForm')
@@ -130,7 +129,7 @@ final class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event);
 
-        $this->timeProvider->expects(static::never())->method('removeFormProtection');
+        $this->timeProvider->expects(self::never())->method('removeFormProtection');
     }
 
     public function testPreSubmitCompoundForm(): void
@@ -154,7 +153,7 @@ final class AntiSpamTimeListenerTest extends TestCase
         );
         $listener->preSubmit($event);
 
-        $this->timeProvider->expects(static::never())->method('removeFormProtection');
+        $this->timeProvider->expects(self::never())->method('removeFormProtection');
     }
 
     /**

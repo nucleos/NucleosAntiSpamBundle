@@ -23,6 +23,6 @@ final class NucleosAntiSpamBundleTest extends TestCase
     {
         $bundle = new NucleosAntiSpamBundle();
 
-        static::assertInstanceOf(NucleosAntiSpamExtension::class, $bundle->getContainerExtension());
+        self::assertInstanceOf(NucleosAntiSpamExtension::class, $bundle->getContainerExtension());
     }
 }

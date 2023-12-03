@@ -53,6 +53,5 @@ return static function (ContainerConfigurator $container): void {
                 new Parameter('nucleos_antispam.twig.mail_at_text'),
                 new Parameter('nucleos_antispam.twig.mail_dot_text'),
             ])
-
     ;
 };
