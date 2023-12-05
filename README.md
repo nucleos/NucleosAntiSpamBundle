@@ -12,13 +12,13 @@ NucleosAntiSpamBundle
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosAntiSpamBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosAntiSpamBundle)
 
-This bundle provides some basic features to reduce spam in Symfony. It is the successor of `core23/antispam-bundle`, but not related to `isometriks/spam-bundle`.
+This bundle provides some basic features to reduce spam in Symfony.
 
 ## Features
 
-* **Honeypot protection for forms:** An additional "hidden" (i.e. made invisible with CSS) field will be added to your form. Whoever fills out this field, is considered to be a spam bot.
+* **Honeypot protection for forms:** An additional "hidden" (i.e. made invisible with CSS) field will be added to your form. Whoever fills out this field, is considered to be a spambot.
 
-* **Time protection for forms:** The time between *displaying* the form and *submitting* the form is measured. Anybody who submits the form quicker than a certain number of seconds, is considered to be a spam bot. The timestamp is stored in the session.
+* **Time protection for forms:** The time between *displaying* the form and *submitting* the form is measured. Anybody who submits the form quicker than a certain number of seconds, is considered to be a spambot. The timestamp is stored in the session.
 
 * **Email address obfuscation filter for Twig:** To prevent spam harvest bots from detecting your email address, they are obfuscated by e.g. replacing `@` with `[AT]`. The filter will find email addresses automatically, so you can apply it to your entire text.
 
