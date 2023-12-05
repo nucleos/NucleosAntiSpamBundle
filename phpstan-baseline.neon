@@ -21,6 +21,11 @@ parameters:
 			path: src/Form/Extension/HoneypotFormExtension.php
 
 		-
+			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\NucleosAntiSpamBundle\\:\\:getContainerExtension\\(\\) should return Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\ExtensionInterface\\|null but returns Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\ExtensionInterface\\|false\\.$#"
+			count: 1
+			path: src/NucleosAntiSpamBundle.php
+
+		-
 			message: "#^Method Nucleos\\\\AntiSpamBundle\\\\Provider\\\\SessionTimeProvider\\:\\:isValid\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Provider/SessionTimeProvider.php

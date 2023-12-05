@@ -7,4 +7,9 @@
       <code>scalarNode</code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="src/NucleosAntiSpamBundle.php">
+    <FalsableReturnStatement>
+      <code><![CDATA[$this->extension]]></code>
+    </FalsableReturnStatement>
+  </file>
 </files>
