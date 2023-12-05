@@ -5,11 +5,10 @@
     "author": "Christian Gripp <mail@core23.de>",
     "devDependencies": {
         "@babel/core": "^7.20.12",
-        "@babel/preset-env": "^7.20.2",
-        "@size-limit/esbuild": "^9.0.0",
-        "@size-limit/preset-small-lib": "^9.0.0",
-        "@symfony/webpack-encore": "^4.2.0",
         "@babel/eslint-parser": "^7.11.0",
+        "@babel/preset-env": "^7.20.2",
+        "@size-limit/file": "^11.0.0",
+        "@symfony/webpack-encore": "^4.2.0",
         "babel-loader": "^9.0.0",
         "eslint": "^8.32.0",
         "eslint-config-airbnb": "^19.0.0",
@@ -18,7 +17,7 @@
         "eslint-watch": "^8.0.0",
         "sass": "^1.57.1",
         "sass-loader": "^13.2.0",
-        "size-limit": "^9.0.0",
+        "size-limit": "^11.0.0",
         "webpack": "^5.72",
         "webpack-cli": "^5.0.0"
     },
